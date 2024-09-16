@@ -4,35 +4,36 @@ import colors from './colors';
 const theme = createTheme({
   palette: {
     primary: {
-      main: colors.purple[200],
-      light: colors.purple[100],
-      dark: colors.purple[400],
-      contrastText: '#fff',
+      main: colors.green.main,
+      light: colors.green[300],
+      dark: colors.green[700],
+      contrastText: '#000000',
     },
     secondary: {
-      main: colors.purple[200],
-      light: colors.purple[100],
-      dark: colors.purple[400],
-      contrastText: '#fff',
+      main: colors.purple.main,
+      light: colors.purple[300],
+      dark: colors.purple[700],
+      contrastText: '#ffffff',
     },
     error: {
-
+      main: colors.wine.main
     },
     warning: { 
-
+      main: colors.terracot.main,
     },
     info: {
-
+      main: colors.marshmallows.main,
     },
     success: {
-
+      main: colors.mint.main,
     }
   },
   typography: {
-    fontFamily: '',
+    fontFamily: 'Comfortaa',
     fontSize: 14,
     h1: {
         fontSize: 20,
+        color: colors.purple[500],
     },
     h2: {
         fontSize: 16,
@@ -40,8 +41,8 @@ const theme = createTheme({
     button: {
         fontSize: 15,
     }
-
   },
+  components: {},
   spacing: 6,
   breakpoints: {
     values: {
