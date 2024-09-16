@@ -1,27 +1,32 @@
 import React from "react";
-// import { ThemeProvider } from "@mui/material/styles";
-// import theme from "./styles/theme";
-import { Typography, Input, Divider } from "@mui/material";
-import CommonBtn from "./components/buttons/ComonBtn";
+import './styles/styles.css';
+import Grid from "@mui/material/Grid2";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
+import RoutesComponent from './components/pages/Routes';
+
+
 
 const App = () => {
   return (
-    // <ThemeProvider theme={theme}>
-    <div className="App">
-      <Header />
-      <Divider />
+    <Grid container className="App" spacing={2}>
+      <Grid size={12}>
+        <Header />
+      </Grid>
 
-      <Typography>Text is here...</Typography>
-      <CommonBtn>Click me</CommonBtn>
-      <Input placeholder="input smthg"></Input>
-      
-      
-      <Divider />
+      <Grid size={4}>
+        <Sidebar />
+      </Grid>
+      <Grid size={8}>
+        <RoutesComponent />
+      </Grid>
+
+      <Grid size={12}>
       <Footer />
-    </div>
-    // </ThemeProvider>
+      </Grid>
+
+    </Grid>
   );
 };
 
