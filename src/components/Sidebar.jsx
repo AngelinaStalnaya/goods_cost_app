@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <Box sx={{ gap: "15px", display: "flex", flexDirection: "column" }}>
-      <Link to='/'>Home</Link>
-      <Link to="/calculator">Calculator</Link>
-      <Link to="/profile">Profile</Link>
+    <Box className='sidebar' sx={{ gap: "15px", display: "flex", flexDirection: "column" }}>
+      <Link to='/' className="sidebar__link">Home</Link>
+      <Link to="/calculator" className="sidebar__link">Calculator</Link>
+      <Link to="/profile" className="sidebar__link">Profile</Link>
+      
     </Box>
   );
 };

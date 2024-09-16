@@ -1,78 +1,115 @@
-$purple_50: #f4e6f8;
-$purple_100: #e2c0ee;
-$purple_200: #d097e4;
-$purple_300: #bd6dd8;
-$purple_400: #ae4dcf;
-$purple_500: #a02ec6;
-$purple_600: #902bbf;
-$purple_700: #7c27b7;
-$purple_800: #6923af;
-$purple_900: #441ca2;
-$purple_main: #a02ec6;
-$green_50: #ecfee8;
-$green_100: #d0fcc6;
-$green_200: #aefaa0;
-$green_300: #85f774;
-$green_400: #5af34c;
-$green_500: #0def15;
-$green_600: #00dd06;
-$green_700: #00c700;
-$green_800: #00b300;
-$green_900: #008f00;
-$green_main: #0def15;
-$wine_50: #fbe4ea;
-$wine_100: #f7bcca;
-$wine_200: #f192a8;
-$wine_300: #eb6887;
-$wine_400: #e44c6e;
-$wine_500: #df3858;
-$wine_600: #ce3355;
-$wine_700: #b92e51;
-$wine_800: #a4294d;
-$wine_900: #7f2246;
-$wine_main: #b92e51;
-$marshmallows_50: #fde2ee;
-$marshmallows_100: #fab7d5;
-$marshmallows_200: #f886b8;
-$marshmallows_300: #f64e9b;
-$marshmallows_400: #f50083;
-$marshmallows_500: #f5006a;
-$marshmallows_600: #e40067;
-$marshmallows_700: #cd0062;
-$marshmallows_800: #b8005f;
-$marshmallows_900: #910059;
-$marshmallows_main: #f50083;
-$terracot_50: #fefce6;
-$terracot_100: #fbf7c1;
-$terracot_200: #f9f199;
-$terracot_300: #f7ec70;
-$terracot_400: #f4e74f;
-$terracot_500: #f1e22d;
-$terracot_600: #f2d12a;
-$terracot_700: #f1ba21;
-$terracot_800: #efa217;
-$terracot_900: #eb7903;
-$terracot_main: #efa217;
-$mint_50: #e4ffee;
-$mint_100: #beffd4;
-$mint_200: #8dffb7;
-$mint_300: #3aff96;
-$mint_400: #00fb79;
-$mint_500: #00f563;
-$mint_600: #00e357;
-$mint_700: #00ce49;
-$mint_800: #00bc3d;
-$mint_900: #009a27;
-$mint_main: #3aff96;
+:root {
+  --purple_50: #f4e6f8;
+  --purple_100: #e2c0ee;
+  --purple_200: #d097e4;
+  --purple_300: #bd6dd8;
+  --purple_400: #ae4dcf;
+  --purple_500: #a02ec6;
+  --purple_600: #902bbf;
+  --purple_700: #7c27b7;
+  --purple_800: #6923af;
+  --purple_900: #441ca2;
+  --purple_main: #a02ec6;
+  --green_50: #ecfee8;
+  --green_100: #d0fcc6;
+  --green_200: #aefaa0;
+  --green_300: #85f774;
+  --green_400: #5af34c;
+  --green_500: #0def15;
+  --green_600: #00dd06;
+  --green_700: #00c700;
+  --green_800: #00b300;
+  --green_900: #008f00;
+  --green_main: #0def15;
+  --wine_50: #fbe4ea;
+  --wine_100: #f7bcca;
+  --wine_200: #f192a8;
+  --wine_300: #eb6887;
+  --wine_400: #e44c6e;
+  --wine_500: #df3858;
+  --wine_600: #ce3355;
+  --wine_700: #b92e51;
+  --wine_800: #a4294d;
+  --wine_900: #7f2246;
+  --wine_main: #b92e51;
+  --marshmallows_50: #fde2ee;
+  --marshmallows_100: #fab7d5;
+  --marshmallows_200: #f886b8;
+  --marshmallows_300: #f64e9b;
+  --marshmallows_400: #f50083;
+  --marshmallows_500: #f5006a;
+  --marshmallows_600: #e40067;
+  --marshmallows_700: #cd0062;
+  --marshmallows_800: #b8005f;
+  --marshmallows_900: #910059;
+  --marshmallows_main: #f50083;
+  --terracot_50: #fefce6;
+  --terracot_100: #fbf7c1;
+  --terracot_200: #f9f199;
+  --terracot_300: #f7ec70;
+  --terracot_400: #f4e74f;
+  --terracot_500: #f1e22d;
+  --terracot_600: #f2d12a;
+  --terracot_700: #f1ba21;
+  --terracot_800: #efa217;
+  --terracot_900: #eb7903;
+  --terracot_main: #efa217;
+  --mint_50: #e4ffee;
+  --mint_100: #beffd4;
+  --mint_200: #8dffb7;
+  --mint_300: #3aff96;
+  --mint_400: #00fb79;
+  --mint_500: #00f563;
+  --mint_600: #00e357;
+  --mint_700: #00ce49;
+  --mint_800: #00bc3d;
+  --mint_900: #009a27;
+  --mint_main: #3aff96;
+}
 
 .App {
   padding: 10px;
   margin: 25px;
-  border: 2px dotted $mint_300;
-  background-color: $terracot_300;
+  border: 2px solid var(--wine_900);
+  background-color: var(--purple_50);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header {
   padding: 25px;
-  background-color: $mint_300;
+  background-color: var(--mint_300);
+  display: flex;
+  justify-content: space-between;
 }
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  background-color: var(--marshmallows_200);
+}
+
+.sidebar {
+  background-color: var(--purple_50);
+}
+
+.sidebar__link { 
+  color: var(--purple_800);
+  background-color: transparent;
+  transition: color 0.3s ease-in-out, background-color 0.3ss ease-in-out;
+
+  &:focus, &:hover {
+    color: var(--purple_50);
+    background-color: var(--purple_600);
+  }
+
+  &:active {
+    color: var(--marshmallows_100);
+    background-color: var(--marshmallows_700);
+  }
+}
+

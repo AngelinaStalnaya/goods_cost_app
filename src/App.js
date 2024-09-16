@@ -10,9 +10,10 @@ import RoutesComponent from './components/pages/Routes';
 
 const App = () => {
   return (
-    <Grid container className="App" spacing={2}>
+    <div className='App'>
+    <Grid container spacing={2}>
       <Grid size={12}>
-        <Header />
+        <Header/>
       </Grid>
 
       <Grid size={4}>
@@ -27,6 +28,7 @@ const App = () => {
       </Grid>
 
     </Grid>
+    </div>
   );
 };
 
