@@ -4,10 +4,10 @@ import { Typography, Input, InputLabel, FormGroup } from "@mui/material";
 
 const Calculator = () => {
   const [basicCost, setBasicCost] = useState({
-    hours: '',
-    payment: '',
-    materials: '',
-    package: '',
+    hours: "",
+    payment: "",
+    materials: "",
+    package: "",
   });
 
   const handleBasicCalcInput = (event) => {
@@ -21,9 +21,9 @@ const Calculator = () => {
   };
 
   const [additionalCost, setAdditionalCost] = useState({
-    delivery: '',
-    additional_costs: '',
-    equipment: '',
+    delivery: "",
+    additional_costs: "",
+    equipment: "",
   });
 
   const handleAdditionalCalcInput = (event) => {
@@ -41,7 +41,7 @@ const Calculator = () => {
     setTaxRate(event.target.value);
   };
 
-  const costsCalculations = (obj) => {
+  const additionalCostsCalculations = (obj) => {
     const values = Object.values(obj);
 
     const calculation = values.reduce(function (currSum, currNum) {
@@ -49,6 +49,20 @@ const Calculator = () => {
     }, 0);
     return calculation;
   };
+  const additionalResult = additionalCostsCalculations(additionalCost);
+
+  const basicCostsCalculations = (obj) => {
+    let calculation = obj.payment * obj.hours;
+    calculation += Number(obj.package) || 0;
+    calculation += Number(obj.materials) || 0;
+    return calculation;
+  };
+  const basicResult = basicCostsCalculations(basicCost);
+
+  const totalCost =
+    (basicResult + additionalResult) * (taxRate / 100) +
+    basicResult +
+    additionalResult;
 
   return (
     <>
@@ -166,16 +180,14 @@ const Calculator = () => {
       </FormGroup>
 
       <Typography className="basicCosts">
-        Materials and work: {costsCalculations(basicCost)}
+        Materials and work: {basicResult}
       </Typography>
       <Typography className="additionals">
-        Additional costs: {costsCalculations(additionalCost)}
+        Additional costs: {additionalResult}
       </Typography>
-      <Typography className="taxes">
-        Tax rate: {taxRate}
-      </Typography>
+      <Typography className="taxes">Tax rate (%): {taxRate}</Typography>
 
-      <Typography className="totalCost">Total: {0}</Typography>
+      <Typography className="totalCost">Total: {totalCost || 0} </Typography>
     </>
   );
 };
