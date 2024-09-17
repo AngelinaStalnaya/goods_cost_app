@@ -16,10 +16,10 @@ const App = () => {
         <Header/>
       </Grid>
 
-      <Grid size={4}>
+      <Grid size={3}>
         <Sidebar />
       </Grid>
-      <Grid size={8}>
+      <Grid size={9}>
         <RoutesComponent />
       </Grid>
 

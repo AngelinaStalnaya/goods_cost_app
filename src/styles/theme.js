@@ -31,6 +31,7 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Comfortaa',
     fontSize: 14,
+
     h1: {
         fontSize: 20,
         color: colors.purple[500],

@@ -70,8 +70,8 @@
 .App {
   padding: 10px;
   margin: 25px;
-  border: 2px solid var(--wine_900);
-  background-color: var(--purple_50);
+  border-radius: 5px;
+  background-color: var(--wine_50);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -90,26 +90,63 @@
   justify-content: center;
   align-items: center;
   min-height: 60px;
-  background-color: var(--marshmallows_200);
+  background-color: var(--mint_300);
 }
 
 .sidebar {
-  background-color: var(--purple_50);
+  gap: 15px;
+  border: 1px solid var(--green_500);
+  border-radius: 5px;
 }
 
 .sidebar__link { 
-  color: var(--purple_800);
-  background-color: transparent;
-  transition: color 0.3s ease-in-out, background-color 0.3ss ease-in-out;
+  color: var(--purple_500);
+  border-radius: 5px;
+  min-height: 25px;
+  padding-left: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-  &:focus, &:hover {
+  &:focus {
+    color: var(--green_50);
+    background-color: var(--green_800);
+  }
+
+  &:hover {
     color: var(--purple_50);
     background-color: var(--purple_600);
   }
 
   &:active {
-    color: var(--marshmallows_100);
+    color: var(--marshmallows_50);
     background-color: var(--marshmallows_700);
   }
 }
 
+.section__header {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--purple_700);
+
+}
+
+.section__descr {
+  margin-bottom: 20px;
+}
+
+.input {
+  color: #008f00;
+}
+
+.input__label {
+  padding: 0;
+}
+
+.totalCost {
+  font-size: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
