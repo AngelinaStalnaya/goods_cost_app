@@ -145,8 +145,14 @@
   padding: 0;
 }
 
+.basicCosts, .additionals, .taxes {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .totalCost {
   font-size: 50px;
   display: flex;
   justify-content: flex-end;
 }
+

@@ -3,29 +3,51 @@ import { useState } from "react";
 import { Typography, Input, InputLabel, FormGroup } from "@mui/material";
 
 const Calculator = () => {
-  const [totalCost, setTotalCost] = useState({
-    hours: "",
-    payment: "",
-    delivery: "",
-    package: "",
-  });
-
-  const [additionalCost, setAdditionalCost] = useState({
-    tax_rate: "",
-    equipment: "",
+  const [basicCost, setBasicCost] = useState({
+    hours: '',
+    payment: '',
+    materials: '',
+    package: '',
   });
 
   const handleBasicCalcInput = (event) => {
-    setTotalCost(event.target.value);
+    const { name, value } = event.target;
+    setBasicCost((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
   };
+
+  const [additionalCost, setAdditionalCost] = useState({
+    delivery: '',
+    additional_costs: '',
+    equipment: '',
+  });
 
   const handleAdditionalCalcInput = (event) => {
     const { name, value } = event.target;
-    setAdditionalCost((prevState) => ({
-      ...prevState,
-      [name]: value,
-  
-    }));
+    setAdditionalCost((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const [taxRate, setTaxRate] = useState("");
+  const handleTaxInput = (event) => {
+    setTaxRate(event.target.value);
+  };
+
+  const costsCalculations = (obj) => {
+    const values = Object.values(obj);
+
+    const calculation = values.reduce(function (currSum, currNum) {
+      return Number(currSum) + Number(currNum);
+    }, 0);
+    return calculation;
   };
 
   return (
@@ -48,6 +70,9 @@ const Calculator = () => {
           placeholder="f.e. 5"
           type="number"
           required
+          name="hours"
+          value={basicCost.hours}
+          onChange={handleBasicCalcInput}
         />
         <InputLabel htmlFor="input-labour-cost" className="input__label">
           Enter the cost of your labour hour:
@@ -57,6 +82,10 @@ const Calculator = () => {
           aria-label="Cost of labour"
           placeholder="f.e. 8"
           required
+          type="number"
+          name="payment"
+          value={basicCost.payment}
+          onChange={handleBasicCalcInput}
         />
         <InputLabel htmlFor="input-material-costs" className="input__label">
           Enter material costs for the product:
@@ -65,6 +94,11 @@ const Calculator = () => {
           id="input-material-costs"
           aria-label="Material costs"
           placeholder="f.e. 15"
+          name="materials"
+          type="number"
+          value={basicCost.materials}
+          onChange={handleBasicCalcInput}
+          required
         />
         <InputLabel htmlFor="input-delivery-costs" className="input__label">
           Enter delivery costs(if needed):
@@ -73,6 +107,10 @@ const Calculator = () => {
           id="input-delivery-costs"
           aria-label="Delivery costs"
           placeholder="f.e. 5"
+          name="delivery"
+          type="number"
+          value={additionalCost.delivery}
+          onChange={handleAdditionalCalcInput}
         />
 
         <InputLabel htmlFor="input-package" className="input__label">
@@ -82,6 +120,10 @@ const Calculator = () => {
           id="input-package"
           aria-label="Package costs"
           placeholder="f.e. 2"
+          name="package"
+          type="number"
+          value={basicCost.package}
+          onChange={handleBasicCalcInput}
         />
         <InputLabel htmlFor="input-tax-rate" className="input__label">
           Enter tax rate:
@@ -90,6 +132,10 @@ const Calculator = () => {
           id="input-tax-rate"
           aria-label="Tax rate"
           placeholder="f.e. 10"
+          name="tax_rate"
+          type="number"
+          value={taxRate.tax_rate}
+          onChange={handleTaxInput}
         />
 
         <InputLabel htmlFor="input-additional-costs" className="input__label">
@@ -99,6 +145,10 @@ const Calculator = () => {
           id="input-additional-costs"
           aria-label="Additional costs"
           placeholder="f.e. 3.5"
+          name="additional_costs"
+          type="number"
+          value={additionalCost.additional_costs}
+          onChange={handleAdditionalCalcInput}
         />
 
         <InputLabel htmlFor="input-equipment-usage" className="input__label">
@@ -108,10 +158,24 @@ const Calculator = () => {
           id="input-equipment-usage"
           aria-label="Core materials equipment usage costs"
           placeholder="f.e. 0.7"
+          name="equipment"
+          type="number"
+          value={additionalCost.equipment}
+          onChange={handleAdditionalCalcInput}
         />
       </FormGroup>
 
-      <Typography className="totalCost">Total: {totalCost}</Typography>
+      <Typography className="basicCosts">
+        Materials and work: {costsCalculations(basicCost)}
+      </Typography>
+      <Typography className="additionals">
+        Additional costs: {costsCalculations(additionalCost)}
+      </Typography>
+      <Typography className="taxes">
+        Tax rate: {taxRate}
+      </Typography>
+
+      <Typography className="totalCost">Total: {0}</Typography>
     </>
   );
 };
