@@ -15,7 +15,7 @@ const Calculator = () => {
   const basicCostInitialState = {hours: "",
     payment: "",
     materials: "",
-    package: "",}
+    packaging: "",}
 
   const [basicCost, setBasicCost] = useState(basicCostInitialState);
 
@@ -73,7 +73,7 @@ const Calculator = () => {
 
   const basicCostsCalculations = (obj) => {
     let calculation = obj.payment * obj.hours;
-    calculation += Number(obj.package) || 0;
+    calculation += Number(obj.packaging) || 0;
     calculation += Number(obj.materials) || 0;
     return calculation;
   };
@@ -99,6 +99,7 @@ const Calculator = () => {
       tax_rate: taxRate,
       ...basicCost,
       ...additionalCost,
+      date: Date(),
     };
     localStorage.setItem("user", JSON.stringify(user));
     handleClose();
@@ -109,6 +110,30 @@ const Calculator = () => {
     setAdditionalCost(additionalCostsInitialState);
     setTaxRate(taxRateInitialState);
   };
+
+  // const handleLastSavedCalculation = () => {
+  //   const lastCalculation = JSON.parse(localStorage.getItem('user')) ;
+    
+  //   // console.log(lastCalculation)
+  //   // console.log(lastCalculation.name)
+    
+  //   // [name, tax_rate, hours, payment, materials, packaging, delivery , additional_costs, equipment ]
+  //   setAdditionalCost({
+  //     delivery: lastCalculation.delivery,
+  //     additional_costs: lastCalculation.additional_costs,
+  //     equipment: lastCalculation.equipment,
+  //   });
+
+  //   setBasicCost({
+  //     hours: lastCalculation.hours,
+  //     payment: lastCalculation.payment,
+  //     materials: lastCalculation.materials,
+  //     packaging: lastCalculation.packaging,
+  //   });
+
+  //   setTaxRate({tax_rate: lastCalculation.tax_rate});
+  //   alert(`The name of calculation is '${lastCalculation.name}'`)  
+  // }
 
   return (
     <>
@@ -173,16 +198,16 @@ const Calculator = () => {
           onChange={handleAdditionalCalcInput}
         />
 
-        <InputLabel htmlFor="input-package" className="input__label">
-          Enter package costs (if needed, including final wrapping):
+        <InputLabel htmlFor="input-packaging" className="input__label">
+          Enter packaging costs (if needed, including final wrapping):
         </InputLabel>
         <Input
-          id="input-package"
-          aria-label="Package costs"
+          id="input-packaging"
+          aria-label="packaging costs"
           placeholder="f.e. 2"
-          name="package"
+          name="packaging"
           type="number"
-          value={basicCost.package}
+          value={basicCost.packaging}
           onChange={handleBasicCalcInput}
         />
         <InputLabel htmlFor="input-tax-rate" className="input__label">
@@ -236,9 +261,9 @@ const Calculator = () => {
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
 
       <Divider />
-      <ComonBtn handleBtnClick={handleOpen}>Save</ComonBtn>
+      <ComonBtn handleBtnClick={handleOpen}>Save calculation</ComonBtn>
       <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
-
+      {/* <ComonBtn handleBtnClick={handleLastSavedCalculation}>Show last saved</ComonBtn> */}
       <Modal
         className="modal__save"
         open={open}
