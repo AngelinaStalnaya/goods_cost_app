@@ -3,7 +3,7 @@ import IconBtn from "./buttons/IconBtn";
 import { useState } from "react";
 
 const Header = () => {
-  const [authorized, setAuthorized] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
   return (
     <header className="header">
       icon name

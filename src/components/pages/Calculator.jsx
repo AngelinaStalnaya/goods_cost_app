@@ -1,6 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Typography, Input, InputLabel, FormGroup } from "@mui/material";
+import {
+  Typography,
+  Input,
+  InputLabel,
+  FormGroup,
+  Divider,
+  Box,
+  Modal,
+} from "@mui/material";
+import ComonBtn from "../buttons/ComonBtn";
 
 const Calculator = () => {
   const [basicCost, setBasicCost] = useState({
@@ -63,6 +72,19 @@ const Calculator = () => {
     (basicResult + additionalResult) * (taxRate / 100) +
     basicResult +
     additionalResult;
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const [calculationName, setCalculationName] = useState('');
+
+  const handleSaveСalculation = () => {
+    const user = {
+      name: '',
+    }
+    localStorage.setItem('user', JSON.stringify(user));
+  };
 
   return (
     <>
@@ -188,6 +210,33 @@ const Calculator = () => {
       <Typography className="taxes">Tax rate (%): {taxRate}</Typography>
 
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
+
+      <Divider />
+      <ComonBtn handleBtnClick={handleOpen}>Save</ComonBtn>
+
+      <Modal
+        className="modal__save"
+        open={open}
+        onClose={handleClose}
+        aria-label="Modal vave calculation"
+      >
+        <Box className="modal__content">
+          <FormGroup>
+            <InputLabel htmlFor="input-name" className="input__label">
+              Enter the name of your calculation:
+            </InputLabel>
+            <Input
+              id="input-name"
+              aria-label="Calculation name"
+              placeholder="f.e. Felt doll small"
+              type="string"
+              name="name"
+            />
+          </FormGroup>
+          <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
+          <ComonBtn handleBtnClick={handleClose}>Cancel</ComonBtn>
+        </Box>
+      </Modal>
     </>
   );
 };
