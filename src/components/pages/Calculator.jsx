@@ -78,13 +78,20 @@ const Calculator = () => {
   const handleClose = () => setOpen(false);
 
   const [calculationName, setCalculationName] = useState('');
+  const handleSetCalculationName = (event) => {
+    setCalculationName(event.target.value);
+  }
 
   const handleSaveСalculation = () => {
     const user = {
-      name: '',
+      name: `${calculationName}`,
+      ...basicCost,
+      ...additionalCost,
+      tax_rate: taxRate,
     }
     localStorage.setItem('user', JSON.stringify(user));
-  };
+    handleClose();
+    };
 
   return (
     <>
@@ -231,6 +238,8 @@ const Calculator = () => {
               placeholder="f.e. Felt doll small"
               type="string"
               name="name"
+          value={calculationName}
+          onChange={handleSetCalculationName}
             />
           </FormGroup>
           <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
