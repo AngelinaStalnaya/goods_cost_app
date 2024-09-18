@@ -12,12 +12,12 @@ import {
 import ComonBtn from "../buttons/ComonBtn";
 
 const Calculator = () => {
-  const [basicCost, setBasicCost] = useState({
-    hours: "",
+  const basicCostInitialState = {hours: "",
     payment: "",
     materials: "",
-    package: "",
-  });
+    package: "",}
+
+  const [basicCost, setBasicCost] = useState(basicCostInitialState);
 
   const handleBasicCalcInput = (event) => {
     const { name, value } = event.target;
@@ -29,11 +29,12 @@ const Calculator = () => {
     });
   };
 
-  const [additionalCost, setAdditionalCost] = useState({
-    delivery: "",
-    additional_costs: "",
-    equipment: "",
-  });
+    const additionalCostsInitialState = {
+      delivery: "",
+      additional_costs: "",
+      equipment: "",
+    };
+  const [additionalCost, setAdditionalCost] = useState(additionalCostsInitialState);
 
   const handleAdditionalCalcInput = (event) => {
     const { name, value } = event.target;
@@ -45,8 +46,18 @@ const Calculator = () => {
     });
   };
 
-  const [taxRate, setTaxRate] = useState("");
+  const taxRateInitialState = {
+    tax_rate: '',
+  }
+  const [taxRate, setTaxRate] = useState(taxRateInitialState);
   const handleTaxInput = (event) => {
+    const { name, value } = event.target;
+    setTaxRate((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
     setTaxRate(event.target.value);
   };
 
@@ -77,21 +88,27 @@ const Calculator = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [calculationName, setCalculationName] = useState('');
+  const [calculationName, setCalculationName] = useState("");
   const handleSetCalculationName = (event) => {
     setCalculationName(event.target.value);
-  }
+  };
 
   const handleSaveСalculation = () => {
     const user = {
       name: `${calculationName}`,
+      tax_rate: taxRate,
       ...basicCost,
       ...additionalCost,
-      tax_rate: taxRate,
-    }
-    localStorage.setItem('user', JSON.stringify(user));
-    handleClose();
     };
+    localStorage.setItem("user", JSON.stringify(user));
+    handleClose();
+  };
+
+  const handleFormClear = () => {
+    setBasicCost(basicCostInitialState);
+    setAdditionalCost(additionalCostsInitialState);
+    setTaxRate(taxRateInitialState);
+  };
 
   return (
     <>
@@ -214,12 +231,13 @@ const Calculator = () => {
       <Typography className="additionals">
         Additional costs: {additionalResult}
       </Typography>
-      <Typography className="taxes">Tax rate (%): {taxRate}</Typography>
+      <Typography className="taxes">Tax rate (%): {taxRate.tax_rate}</Typography>
 
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
 
       <Divider />
       <ComonBtn handleBtnClick={handleOpen}>Save</ComonBtn>
+      <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
 
       <Modal
         className="modal__save"
@@ -238,8 +256,8 @@ const Calculator = () => {
               placeholder="f.e. Felt doll small"
               type="string"
               name="name"
-          value={calculationName}
-          onChange={handleSetCalculationName}
+              value={calculationName}
+              onChange={handleSetCalculationName}
             />
           </FormGroup>
           <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
