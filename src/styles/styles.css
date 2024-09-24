@@ -173,3 +173,14 @@
   top: 25%;
   left: 25%;
 }
+
+.header__icon-link {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formdata__box {
+  display: flex;
+  justify-content: space-between;
+}

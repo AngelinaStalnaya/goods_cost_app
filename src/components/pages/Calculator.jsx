@@ -12,10 +12,12 @@ import {
 import ComonBtn from "../buttons/ComonBtn";
 
 const Calculator = () => {
-  const basicCostInitialState = {hours: "",
+  const basicCostInitialState = {
+    hours: "",
     payment: "",
     materials: "",
-    packaging: "",}
+    packaging: "",
+  };
 
   const [basicCost, setBasicCost] = useState(basicCostInitialState);
 
@@ -29,12 +31,14 @@ const Calculator = () => {
     });
   };
 
-    const additionalCostsInitialState = {
-      delivery: "",
-      additional_costs: "",
-      equipment: "",
-    };
-  const [additionalCost, setAdditionalCost] = useState(additionalCostsInitialState);
+  const additionalCostsInitialState = {
+    delivery: "",
+    additional_costs: "",
+    equipment: "",
+  };
+  const [additionalCost, setAdditionalCost] = useState(
+    additionalCostsInitialState
+  );
 
   const handleAdditionalCalcInput = (event) => {
     const { name, value } = event.target;
@@ -47,8 +51,8 @@ const Calculator = () => {
   };
 
   const taxRateInitialState = {
-    tax_rate: '',
-  }
+    tax_rate: "",
+  };
   const [taxRate, setTaxRate] = useState(taxRateInitialState);
   const handleTaxInput = (event) => {
     const { name, value } = event.target;
@@ -93,47 +97,47 @@ const Calculator = () => {
     setCalculationName(event.target.value);
   };
 
+  // const getUserSavedCalculations = () => {
+  //   const userCalculations = localStorage.getItem("user");
+  //   if (userCalculations) {
+  //     JSON.parse(userCalculations);
+  //   }
+  //   return userCalculations | {};
+  // };
+
+  // const setUserSavedCalculations = (userState, addState) => {
+
+  //   const newState = {
+  //     ...userState?.projects, addState
+  //   };
+
+  //   localStorage.setItem("user", JSON.stringify(newState));
+  // };
+
   const handleSaveСalculation = () => {
-    const user = {
+    const project = {
       name: `${calculationName}`,
       tax_rate: taxRate,
       ...basicCost,
       ...additionalCost,
       date: Date(),
     };
-    localStorage.setItem("user", JSON.stringify(user));
+
+    // const userState = getUserSavedCalculations();
+    // setUserSavedCalculations(userState, `${calculationName}`);
+
+    localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
+    setCalculationName("");
     handleClose();
   };
+
+  // localStorage.removeItem('user')
 
   const handleFormClear = () => {
     setBasicCost(basicCostInitialState);
     setAdditionalCost(additionalCostsInitialState);
     setTaxRate(taxRateInitialState);
   };
-
-  // const handleLastSavedCalculation = () => {
-  //   const lastCalculation = JSON.parse(localStorage.getItem('user')) ;
-    
-  //   // console.log(lastCalculation)
-  //   // console.log(lastCalculation.name)
-    
-  //   // [name, tax_rate, hours, payment, materials, packaging, delivery , additional_costs, equipment ]
-  //   setAdditionalCost({
-  //     delivery: lastCalculation.delivery,
-  //     additional_costs: lastCalculation.additional_costs,
-  //     equipment: lastCalculation.equipment,
-  //   });
-
-  //   setBasicCost({
-  //     hours: lastCalculation.hours,
-  //     payment: lastCalculation.payment,
-  //     materials: lastCalculation.materials,
-  //     packaging: lastCalculation.packaging,
-  //   });
-
-  //   setTaxRate({tax_rate: lastCalculation.tax_rate});
-  //   alert(`The name of calculation is '${lastCalculation.name}'`)  
-  // }
 
   return (
     <>
@@ -256,7 +260,9 @@ const Calculator = () => {
       <Typography className="additionals">
         Additional costs: {additionalResult}
       </Typography>
-      <Typography className="taxes">Tax rate (%): {taxRate.tax_rate}</Typography>
+      <Typography className="taxes">
+        Tax rate (%): {taxRate.tax_rate}
+      </Typography>
 
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
 
