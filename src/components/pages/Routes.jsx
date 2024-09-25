@@ -4,7 +4,7 @@ import Calculator from "./Calculator";
 import Profile from "./Profile";
 import Home from './Home';
 import Error from './Error';
-import CalculationForm from "../formdata/CalculationForm";
+import CalculationForm from "./CalculationForm";
 
 
 
@@ -15,7 +15,7 @@ const RoutesComponent = () => {
     <Route path='/' element={<Home/>} />
     <Route path='/calculator' element={<Calculator/>}/>
     <Route path='/profile' element={<Profile/>} />
-    <Route path='/calculation:id' element={<CalculationForm/> } />
+    <Route path='/calculation/:projectName' element={<CalculationForm /> } />
 
     <Route path='*'  element={<Error />} />
   </Routes>

@@ -97,23 +97,6 @@ const Calculator = () => {
     setCalculationName(event.target.value);
   };
 
-  // const getUserSavedCalculations = () => {
-  //   const userCalculations = localStorage.getItem("user");
-  //   if (userCalculations) {
-  //     JSON.parse(userCalculations);
-  //   }
-  //   return userCalculations | {};
-  // };
-
-  // const setUserSavedCalculations = (userState, addState) => {
-
-  //   const newState = {
-  //     ...userState?.projects, addState
-  //   };
-
-  //   localStorage.setItem("user", JSON.stringify(newState));
-  // };
-
   const handleSaveСalculation = () => {
     const project = {
       name: `${calculationName}`,
@@ -123,15 +106,10 @@ const Calculator = () => {
       date: Date(),
     };
 
-    // const userState = getUserSavedCalculations();
-    // setUserSavedCalculations(userState, `${calculationName}`);
-
     localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
     setCalculationName("");
     handleClose();
   };
-
-  // localStorage.removeItem('user')
 
   const handleFormClear = () => {
     setBasicCost(basicCostInitialState);
