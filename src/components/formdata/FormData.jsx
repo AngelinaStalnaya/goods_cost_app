@@ -1,10 +1,11 @@
-import React from 'react';
-import ComonBtn from '../buttons/ComonBtn';
-import { FormGroup, Typography } from '@mui/material';
+import React from "react";
+import ComonBtn from "../buttons/ComonBtn";
+import { FormGroup } from "@mui/material";
+import InputWithLabel from "../input/InputWithLabel";
 
-const FormData = ({fieldData, handleChange}) => {
-  fieldData= JSON.parse(fieldData)
-  
+const FormData = ({ fieldData, handleChange }) => {
+  fieldData = JSON.parse(fieldData);
+
   return (
     //   {/* {fieldData.hours}//
     // {fieldData.payment}//
@@ -15,48 +16,34 @@ const FormData = ({fieldData, handleChange}) => {
     // {fieldData.additional_costs}//
     // {fieldData.equipment}// */}
 
-    <FormGroup className='formdata__box'>
-      <Typography>{fieldData.name}</Typography>
+    // <FormGroup className='formdata__box'>
+    //   <Typography>{fieldData.name}</Typography>
 
-      
-
-
-    </FormGroup>
-
+    // </FormGroup>
 
     // <ComonBtn handleBtnClick={handleChange}></ComonBtn>
+ 
+    <FormGroup>
+      <InputWithLabel
+        id="time"
+        labelText="Time spent for the product"
+        aria_label="Time spent"
+        type="number"
+        name="hours"
+        value={fieldData.hours}
+        handleChangeInput={handleChange}
+      />
+      <InputWithLabel
+        id="labour_cost"
+        labelText="The cost of labour hour"
+        aria_label="Labour cost"
+        type="number"
+        name="payment"
+        vaue={3}
+        handleChangeInput={handleChange}
+      />
 
-  )
-
-
-<FormGroup>
-        <InputLabel htmlFor="input-time" className="input__label">
-          Enter the time in hours you've spent:
-        </InputLabel>
-        <Input
-          id="input-time"
-          aria-label="Time spent input"
-          placeholder="f.e. 5"
-          type="number"
-          required
-          name="hours"
-          value={basicCost.hours}
-          onChange={handleBasicCalcInput}
-        />
-        <InputLabel htmlFor="input-labour-cost" className="input__label">
-          Enter the cost of your labour hour:
-        </InputLabel>
-        <Input
-          id="input-labour-cost"
-          aria-label="Cost of labour"
-          placeholder="f.e. 8"
-          required
-          type="number"
-          name="payment"
-          value={basicCost.payment}
-          onChange={handleBasicCalcInput}
-        />
-        <InputLabel htmlFor="input-material-costs" className="input__label">
+      {/* <InputLabel htmlFor="input-material-costs" className="input__label">
           Enter material costs for the product:
         </InputLabel>
         <Input
@@ -131,10 +118,9 @@ const FormData = ({fieldData, handleChange}) => {
           type="number"
           value={additionalCost.equipment}
           onChange={handleAdditionalCalcInput}
-        />
-      </FormGroup>
-
-
+        />  */}
+    </FormGroup>
+  );
 };
 
 export default FormData;

@@ -62,7 +62,6 @@ const Calculator = () => {
         [name]: value,
       };
     });
-    setTaxRate(event.target.value);
   };
 
   const additionalCostsCalculations = (obj) => {
@@ -84,7 +83,7 @@ const Calculator = () => {
   const basicResult = basicCostsCalculations(basicCost);
 
   const totalCost =
-    (basicResult + additionalResult) * (taxRate / 100) +
+    (basicResult + additionalResult) * (taxRate.tax_rate / 100) +
     basicResult +
     additionalResult;
 
@@ -100,7 +99,7 @@ const Calculator = () => {
   const handleSaveСalculation = () => {
     const project = {
       name: `${calculationName}`,
-      tax_rate: taxRate,
+      tax_rate: taxRate.tax_rate,
       ...basicCost,
       ...additionalCost,
       date: Date(),
@@ -247,12 +246,11 @@ const Calculator = () => {
       <Divider />
       <ComonBtn handleBtnClick={handleOpen}>Save calculation</ComonBtn>
       <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
-      {/* <ComonBtn handleBtnClick={handleLastSavedCalculation}>Show last saved</ComonBtn> */}
       <Modal
         className="modal__save"
         open={open}
         onClose={handleClose}
-        aria-label="Modal vave calculation"
+        aria-label="Modal save calculation"
       >
         <Box className="modal__content">
           <FormGroup>

@@ -31,21 +31,6 @@ const CalculationForm = () => {
     <div>
       <ComonBtn handleBtnClick={handleBackBtnClick}>Go back</ComonBtn>
       <FormData fieldData={projectData} handleChange={handleFieldChange}/>
-
-      {/* const additionalCosts = {
-        delivery: lastCalculation.delivery,
-        additional_costs: lastCalculation.additional_costs,
-        equipment: lastCalculation.equipment,
-      };
-
-      const basicCosts = {
-        hours: lastCalculation.hours,
-        payment: lastCalculation.payment,
-        materials: lastCalculation.materials,
-        packaging: lastCalculation.packaging,
-      };
-
-      const taxRate = lastCalculation.tax_rate; */}
     </div>
   );
 };

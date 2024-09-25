@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const [calculationList, setCalculationList] = useState();
 
-  const allKeys = Object.keys(localStorage).filter((key) =>
-    key.includes("project_")).map((key) => {return key.substring(8)}).sort()
-
+  const allKeys = Object.keys(localStorage)
+    .filter((key) => key.includes("project_"))
+    .map((key) => {
+      return key.substring(8);
+    })
+    .sort();
 
   const handleCalculationsList = () => {
     setCalculationList(allKeys);
   };
-
 
   return (
     <div>
@@ -21,13 +23,11 @@ const Profile = () => {
         <ul>
           {calculationList.map((item, index) => {
             return (
-            <li key={index}>
-              {item} 
-              <Link to={`/calculation/${item}`}>
-              See in details
-              </Link>
+              <li key={index}>
+                {item}
+                <Link to={`/calculation/${item}`}>See in details</Link>
               </li>
-              );
+            );
           })}
         </ul>
       ) : (
