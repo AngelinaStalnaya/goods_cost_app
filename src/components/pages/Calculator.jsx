@@ -8,8 +8,10 @@ import {
   Divider,
   Box,
   Modal,
+  SvgIcon,
 } from "@mui/material";
 import ComonBtn from "../buttons/ComonBtn";
+import * as Svgs from "../../images/svg/SvgIcons";
 
 const Calculator = () => {
   const basicCostInitialState = {
@@ -119,6 +121,7 @@ const Calculator = () => {
   return (
     <>
       <Typography className="section__header">
+        <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
         Handmade Goods Cost Calculator
       </Typography>
       <Typography className="section__descr">

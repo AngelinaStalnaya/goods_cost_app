@@ -3,7 +3,6 @@ import './styles/styles.css';
 import Grid from "@mui/material/Grid2";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
 import RoutesComponent from './components/pages/Routes';
 
 
@@ -16,10 +15,7 @@ const App = () => {
         <Header/>
       </Grid>
 
-      <Grid size={3}>
-        <Sidebar />
-      </Grid>
-      <Grid size={9}>
+     <Grid size={12}>
         <RoutesComponent />
       </Grid>
 

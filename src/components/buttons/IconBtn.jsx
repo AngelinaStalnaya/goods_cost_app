@@ -1,9 +1,9 @@
 import React from "react";
 import { IconButton } from "@mui/material";
 
-const IconBtn = ({ children, aria_label, color, size, handlebtnclick }) => {
+const IconBtn = ({ children, aria_label, color, size, handleBtnClick }) => {
   return (
-    <IconButton aria-label={aria_label} color={color} size={size} onClick={handlebtnclick}>
+    <IconButton aria-label={aria_label} color={color} size={size} onClick={handleBtnClick}>
       {children}
     </IconButton>
   );
