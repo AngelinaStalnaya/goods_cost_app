@@ -1,17 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import {
-  Typography,
-  FormGroup,
-  Divider,
-
-  SvgIcon,
-} from "@mui/material";
+import { Typography, FormGroup, Divider, SvgIcon } from "@mui/material";
 import ComonBtn from "../buttons/ComonBtn";
 import * as Svgs from "../../images/svg/SvgIcons";
 import ModalComponent from "../modal/ModalComponent";
 import InputWithLabel from "../input/InputWithLabel";
 import * as initialState from "../calculator/initialStates";
+import * as requests from "../../requests/calculationRequests";
 
 const Calculator = () => {
   const [basicCost, setBasicCost] = useState(initialState.basicCost);
@@ -85,14 +80,15 @@ const Calculator = () => {
   const handleSaveСalculation = () => {
     const project = {
       name: `${calculationName}`,
+      author: 'sgdhnd',
       tax_rate: taxRate.tax_rate,
       ...basicCost,
       ...additionalCost,
       date: Date(),
     };
 
-    
-    localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
+    // const res = JSON.stringify(project, null, 2)
+    requests.createCalculation(project);
     setCalculationName("");
     handleCloseModal();
   };
@@ -226,7 +222,9 @@ const Calculator = () => {
       <ModalComponent
         className="modal__save"
         aria_label="Modal save calculation"
-        open={open} handleCloseModal handleOpenModal
+        open={open}
+        handleCloseModal
+        handleOpenModal
       >
         <FormGroup>
           <InputWithLabel
