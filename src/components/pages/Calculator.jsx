@@ -2,26 +2,23 @@ import React from "react";
 import { useState } from "react";
 import {
   Typography,
-  Input,
-  InputLabel,
   FormGroup,
   Divider,
-  Box,
-  Modal,
+
   SvgIcon,
 } from "@mui/material";
 import ComonBtn from "../buttons/ComonBtn";
 import * as Svgs from "../../images/svg/SvgIcons";
+import ModalComponent from "../modal/ModalComponent";
+import InputWithLabel from "../input/InputWithLabel";
+import * as initialState from "../calculator/initialStates";
 
 const Calculator = () => {
-  const basicCostInitialState = {
-    hours: "",
-    payment: "",
-    materials: "",
-    packaging: "",
-  };
-
-  const [basicCost, setBasicCost] = useState(basicCostInitialState);
+  const [basicCost, setBasicCost] = useState(initialState.basicCost);
+  const [additionalCost, setAdditionalCost] = useState(
+    initialState.additionalCosts
+  );
+  const [taxRate, setTaxRate] = useState(initialState.taxRate);
 
   const handleBasicCalcInput = (event) => {
     const { name, value } = event.target;
@@ -33,15 +30,6 @@ const Calculator = () => {
     });
   };
 
-  const additionalCostsInitialState = {
-    delivery: "",
-    additional_costs: "",
-    equipment: "",
-  };
-  const [additionalCost, setAdditionalCost] = useState(
-    additionalCostsInitialState
-  );
-
   const handleAdditionalCalcInput = (event) => {
     const { name, value } = event.target;
     setAdditionalCost((prevState) => {
@@ -52,10 +40,6 @@ const Calculator = () => {
     });
   };
 
-  const taxRateInitialState = {
-    tax_rate: "",
-  };
-  const [taxRate, setTaxRate] = useState(taxRateInitialState);
   const handleTaxInput = (event) => {
     const { name, value } = event.target;
     setTaxRate((prevState) => {
@@ -90,8 +74,8 @@ const Calculator = () => {
     additionalResult;
 
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenModal = () => setOpen(true);
+  const handleCloseModal = () => setOpen(false);
 
   const [calculationName, setCalculationName] = useState("");
   const handleSetCalculationName = (event) => {
@@ -107,21 +91,23 @@ const Calculator = () => {
       date: Date(),
     };
 
+    
     localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
     setCalculationName("");
-    handleClose();
+    handleCloseModal();
   };
 
   const handleFormClear = () => {
-    setBasicCost(basicCostInitialState);
-    setAdditionalCost(additionalCostsInitialState);
-    setTaxRate(taxRateInitialState);
+    setBasicCost(initialState.basicCost);
+    setAdditionalCost(initialState.additionalCosts);
+    setTaxRate(initialState.taxRate);
   };
 
   return (
     <>
+      <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
+
       <Typography className="section__header">
-        <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
         Handmade Goods Cost Calculator
       </Typography>
       <Typography className="section__descr">
@@ -130,107 +116,95 @@ const Calculator = () => {
       </Typography>
 
       <FormGroup>
-        <InputLabel htmlFor="input-time" className="input__label">
-          Enter the time in hours you've spent:
-        </InputLabel>
-        <Input
+        <InputWithLabel
           id="input-time"
-          aria-label="Time spent input"
+          labelText="Enter the time in hours you've spent:"
+          aria_label="Time spent input"
           placeholder="f.e. 5"
           type="number"
           required
           name="hours"
           value={basicCost.hours}
-          onChange={handleBasicCalcInput}
+          handleChangeInput={handleBasicCalcInput}
         />
-        <InputLabel htmlFor="input-labour-cost" className="input__label">
-          Enter the cost of your labour hour:
-        </InputLabel>
-        <Input
+
+        <InputWithLabel
           id="input-labour-cost"
-          aria-label="Cost of labour"
+          labelText="Enter the cost of your labour hour:"
+          aria_label="Cost of labour"
           placeholder="f.e. 8"
           required
           type="number"
           name="payment"
           value={basicCost.payment}
-          onChange={handleBasicCalcInput}
+          handleChangeInput={handleBasicCalcInput}
         />
-        <InputLabel htmlFor="input-material-costs" className="input__label">
-          Enter material costs for the product:
-        </InputLabel>
-        <Input
+
+        <InputWithLabel
           id="input-material-costs"
-          aria-label="Material costs"
+          labelText="Enter material costs for the product:"
+          aria_label="Material costs"
           placeholder="f.e. 15"
           name="materials"
           type="number"
           value={basicCost.materials}
-          onChange={handleBasicCalcInput}
+          handleChangeInput={handleBasicCalcInput}
           required
         />
-        <InputLabel htmlFor="input-delivery-costs" className="input__label">
-          Enter delivery costs(if needed):
-        </InputLabel>
-        <Input
+
+        <InputWithLabel
           id="input-delivery-costs"
-          aria-label="Delivery costs"
+          labelText="Enter delivery costs(if needed):"
+          aria_label="Delivery costs"
           placeholder="f.e. 5"
           name="delivery"
           type="number"
           value={additionalCost.delivery}
-          onChange={handleAdditionalCalcInput}
+          handleChangeInput={handleAdditionalCalcInput}
         />
 
-        <InputLabel htmlFor="input-packaging" className="input__label">
-          Enter packaging costs (if needed, including final wrapping):
-        </InputLabel>
-        <Input
+        <InputWithLabel
           id="input-packaging"
-          aria-label="packaging costs"
+          labelText="Enter packaging costs (if needed, including final wrapping):"
+          aria_label="packaging costs"
           placeholder="f.e. 2"
           name="packaging"
           type="number"
           value={basicCost.packaging}
-          onChange={handleBasicCalcInput}
+          handleChangeInput={handleBasicCalcInput}
         />
-        <InputLabel htmlFor="input-tax-rate" className="input__label">
-          Enter tax rate:
-        </InputLabel>
-        <Input
+
+        <InputWithLabel
           id="input-tax-rate"
-          aria-label="Tax rate"
+          labelText="Enter tax rate:"
+          aria_label="Tax rate"
           placeholder="f.e. 10"
           name="tax_rate"
           type="number"
           value={taxRate.tax_rate}
-          onChange={handleTaxInput}
+          handleChangeInput={handleTaxInput}
         />
 
-        <InputLabel htmlFor="input-additional-costs" className="input__label">
-          Enter additional costs(electricity, water, transportation etc.):
-        </InputLabel>
-        <Input
+        <InputWithLabel
           id="input-additional-costs"
-          aria-label="Additional costs"
+          labelText="Enter additional costs(electricity, water, transportation etc.):"
+          aria_label="Additional costs"
           placeholder="f.e. 3.5"
           name="additional_costs"
           type="number"
           value={additionalCost.additional_costs}
-          onChange={handleAdditionalCalcInput}
+          handleChangeInput={handleAdditionalCalcInput}
         />
 
-        <InputLabel htmlFor="input-equipment-usage" className="input__label">
-          Enter costs on basic equipment usage (if needed):
-        </InputLabel>
-        <Input
+        <InputWithLabel
           id="input-equipment-usage"
-          aria-label="Core materials equipment usage costs"
+          labelText="Enter costs on basic equipment usage (if needed):"
+          aria_label="Core materials equipment usage costs"
           placeholder="f.e. 0.7"
           name="equipment"
           type="number"
           value={additionalCost.equipment}
-          onChange={handleAdditionalCalcInput}
+          handleChangeInput={handleAdditionalCalcInput}
         />
       </FormGroup>
 
@@ -247,33 +221,28 @@ const Calculator = () => {
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
 
       <Divider />
-      <ComonBtn handleBtnClick={handleOpen}>Save calculation</ComonBtn>
+      <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>
       <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
-      <Modal
+      <ModalComponent
         className="modal__save"
-        open={open}
-        onClose={handleClose}
-        aria-label="Modal save calculation"
+        aria_label="Modal save calculation"
+        open={open} handleCloseModal handleOpenModal
       >
-        <Box className="modal__content">
-          <FormGroup>
-            <InputLabel htmlFor="input-name" className="input__label">
-              Enter the name of your calculation:
-            </InputLabel>
-            <Input
-              id="input-name"
-              aria-label="Calculation name"
-              placeholder="f.e. Felt doll small"
-              type="string"
-              name="name"
-              value={calculationName}
-              onChange={handleSetCalculationName}
-            />
-          </FormGroup>
-          <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
-          <ComonBtn handleBtnClick={handleClose}>Cancel</ComonBtn>
-        </Box>
-      </Modal>
+        <FormGroup>
+          <InputWithLabel
+            id="input-name"
+            labelText="Enter the name of your calculation:"
+            aria_label="Calculation name"
+            placeholder="f.e. Felt doll small"
+            type="string"
+            name="name"
+            value={calculationName}
+            handleChangeInput={handleSetCalculationName}
+          />
+        </FormGroup>
+        <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
+        <ComonBtn handleBtnClick={handleCloseModal}>Cancel</ComonBtn>
+      </ModalComponent>
     </>
   );
 };

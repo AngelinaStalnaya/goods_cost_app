@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import RoutesComponent from './components/pages/Routes';
 
 
-
 const App = () => {
   return (
     <div className='App'>
