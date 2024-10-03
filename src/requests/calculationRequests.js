@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const createCalculation = (calculation) => {
-    console.log(calculation)
     axios.post('http://localhost:7000/api/calculations', calculation).then((data) => {
         console.log(data)
     }).catch((error)=> console.log(error))

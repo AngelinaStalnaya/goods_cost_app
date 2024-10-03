@@ -78,16 +78,18 @@ const Calculator = () => {
   };
 
   const handleSaveСalculation = () => {
+    const newDate = new Date();
+
     const project = {
       name: `${calculationName}`,
       author: 'sgdhnd',
       tax_rate: taxRate.tax_rate,
       ...basicCost,
       ...additionalCost,
-      date: Date(),
+      date: newDate.toLocaleDateString(),
+      
     };
 
-    // const res = JSON.stringify(project, null, 2)
     requests.createCalculation(project);
     setCalculationName("");
     handleCloseModal();
