@@ -37,9 +37,6 @@ const userSlice = createSlice({
     .addCase(loggedInAsync.fulfilled, (state, action) => {
         state.isAuthorized = true;
         state.name = action.payload.name;
-        console.log('in the addcase async get user data')
-        console.log(action.payload.name)
-
         })
   },
 });

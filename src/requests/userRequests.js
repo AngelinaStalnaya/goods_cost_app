@@ -22,3 +22,9 @@ export const deleteUser = (id) => {
         console.log(data)
     })
 };
+
+export const findUser = (userData) => {
+    axios.post('http://localhost:7000/auth/user/find', userData).then((data) => {
+        console.log(data)
+    })
+};
