@@ -1,10 +1,11 @@
 import React from "react";
 import { findUser, createUser } from "../requests/userRequests";
-import { loggedInAsync } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const SignUp = () => {
+const SignUp = ({loggedInAsync}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const SignUp = () => {
         const createdUser = await createUser(userToSave);
         if (createdUser.status === 200) {
           alert("You successfully signed up.");
-          loggedInAsync(createdUser.data._id);
+          dispatch(loggedInAsync(createdUser.data._id));
           navigate("/");
         }
       }

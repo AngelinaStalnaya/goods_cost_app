@@ -1,21 +1,21 @@
 import React from "react";
 import { findUser } from "../requests/userRequests";
-import { loggedInAsync } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const LogIn = () => {
+
+const LogIn = ({loggedInAsync}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
-
     const response = await findUser(data);
     if (response === null) {
       alert("Wrong login or password. Please, try again!");
     } else {
-      loggedInAsync(response._id);
+      dispatch(loggedInAsync(response._id));
       return navigate("/");
     }
   };

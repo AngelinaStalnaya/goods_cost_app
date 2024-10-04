@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import * as userAPI from '../../requests/userRequests';
+import * as userAPI from "../../requests/userRequests";
 
 export const loggedInAsync = createAsyncThunk(
   "user/loggedInAsync",
@@ -20,19 +20,16 @@ const userSlice = createSlice({
   reducers: {
     loggedOut: (state) => {
       state.isAuthorized = false;
-      state.name = '';
+      state.name = "";
     },
   },
   extraReducers: (builder) => {
-    builder 
-    .addCase(loggedInAsync.fulfilled, (state, action) => {
-        state.isAuthorized = true;
-        state.name = action.payload.name;
-        })
+    builder.addCase(loggedInAsync.fulfilled, (state, action) => {
+      state.isAuthorized = true;
+      state.name = action.payload.name;
+    });
   },
 });
-
-
 
 export const { loggedOut } = userSlice.actions;
 
