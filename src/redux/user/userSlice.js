@@ -9,7 +9,6 @@ export const loggedInAsync = createAsyncThunk(
   }
 );
 
-
 const initialState = {
   isAuthorized: false,
   name: "",
@@ -19,11 +18,6 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loggedIn: (state, action) => {
-      state.isAuthorized = true;
-      state.name = action.payload;
-      state = action.payload;
-    },
     loggedOut: (state) => {
       state.isAuthorized = false;
       state.name = '';
@@ -40,6 +34,6 @@ const userSlice = createSlice({
 
 
 
-export const { loggedIn, loggedOut } = userSlice.actions;
+export const { loggedOut } = userSlice.actions;
 
 export default userSlice.reducer;
