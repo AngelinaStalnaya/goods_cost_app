@@ -9,11 +9,11 @@ import LogIn from '../LogIn';
 
 
 
-const RoutesComponent = ({authorized,   loggedOut, loggedInAsync}) => {
+const RoutesComponent = ({authorized,   loggedOut, loggedInAsync, userName}) => {
   return (
     <>
   <Routes>
-    <Route path='/' element={<Calculator authorised={authorized} loggedOut={loggedOut} />}/>
+    <Route path='/' element={<Calculator authorized={authorized} userName={userName} />}/>
     <Route path='/profile' element={<Profile/>} />
     <Route path='/calculation/:projectName' element={<CalculationForm /> } />
     <Route path='/signup' element={<SignUp loggedInAsync={loggedInAsync}/>} />

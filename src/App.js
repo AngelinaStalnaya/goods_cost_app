@@ -22,7 +22,7 @@ const App = () => {
       </Grid>
 
      <Grid size={12}>
-        <RoutesComponent username={userName} authorized={authorized}  loggedOut={loggedOut} loggedInAsync={loggedInAsync}/>
+        <RoutesComponent userName={userName} authorized={authorized}  loggedOut={loggedOut} loggedInAsync={loggedInAsync}/>
       </Grid>
 
       <Grid size={12}>
