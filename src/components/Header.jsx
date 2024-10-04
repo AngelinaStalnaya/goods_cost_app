@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import * as Svgs from "../images/svg/SvgIcons";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loggedOut, loggedIn, loggedInAsync } from "../redux/user/userSlice";
+import { loggedOut, loggedInAsync } from "../redux/user/userSlice";
 
 const Header = () => {
   const user = useSelector((AppSelector) => AppSelector.user.name);

@@ -30,10 +30,7 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-    // .addCase(loggedInAsync.pending, () => {
-    //     console.log('loggedInAsync.pending');
-    // })    
+    builder 
     .addCase(loggedInAsync.fulfilled, (state, action) => {
         state.isAuthorized = true;
         state.name = action.payload.name;
