@@ -8,7 +8,7 @@ import InputWithLabel from "../input/InputWithLabel";
 import * as initialState from "../calculator/initialStates";
 import * as requests from "../../requests/calculationRequests";
 
-const Calculator = ({authorized, userName}) => {
+const Calculator = ({ authorized, userName }) => {
   const [basicCost, setBasicCost] = useState(initialState.basicCost);
   const [additionalCost, setAdditionalCost] = useState(
     initialState.additionalCosts
@@ -77,7 +77,7 @@ const Calculator = ({authorized, userName}) => {
     setCalculationName(event.target.value);
   };
 
-  const handleSaveСalculation = () => {
+  const handleSaveСalculation = async () => {
     const newDate = new Date();
 
     const project = {
@@ -88,13 +88,13 @@ const Calculator = ({authorized, userName}) => {
       ...additionalCost,
       date: newDate.toLocaleDateString(),
     };
-
-    requests.createCalculation(project);
+    // add loader
+    await requests.createCalculation(project);
     setCalculationName("");
     handleCloseModal();
   };
 
-  const handleFormClear = () => { 
+  const handleFormClear = () => {
     setBasicCost(initialState.basicCost);
     setAdditionalCost(initialState.additionalCosts);
     setTaxRate(initialState.taxRate);
@@ -218,10 +218,14 @@ const Calculator = ({authorized, userName}) => {
       <Typography className="totalCost">Total: {totalCost || 0} </Typography>
 
       <Divider />
-      <Box className='calculation__btns'>
-      {authorized ? <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn> : ''}
-      
-      <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
+      <Box className="calculation__btns">
+        {authorized ? (
+          <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>
+        ) : (
+          ""
+        )}
+
+        <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
       </Box>
       <ModalComponent
         className="modal__save"
@@ -242,7 +246,7 @@ const Calculator = ({authorized, userName}) => {
             handleChangeInput={handleSetCalculationName}
           />
         </FormGroup>
-        <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>          
+        <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
         <ComonBtn handleBtnClick={handleCloseModal}>Cancel</ComonBtn>
       </ModalComponent>
     </>

@@ -12,6 +12,7 @@ export const loggedInAsync = createAsyncThunk(
 const initialState = {
   isAuthorized: false,
   name: "",
+  id: ''
 };
 
 const userSlice = createSlice({
@@ -21,12 +22,14 @@ const userSlice = createSlice({
     loggedOut: (state) => {
       state.isAuthorized = false;
       state.name = "";
+      state.id = '';
     },
   },
   extraReducers: (builder) => {
     builder.addCase(loggedInAsync.fulfilled, (state, action) => {
       state.isAuthorized = true;
       state.name = action.payload.name;
+      state.id = action.payload._id;
     });
   },
 });

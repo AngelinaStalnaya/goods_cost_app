@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import ComonBtn from "../buttons/ComonBtn";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import { getUserCalculationsAsync } from "../../redux/calculations/calculationsSlice";
 
-const Profile = () => {
-  const [calculationList, setCalculationList] = useState();
+const Profile = ({ authorized, userCalculations, userName }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const allKeys = Object.keys(localStorage)
-    .filter((key) => key.includes("project_"))
-    .map((key) => {
-      return key.substring(8);
-    })
-    .sort();
+  useEffect(() => {
+    if (!authorized) navigate("/");
+  });
 
-  const handleCalculationsList = () => {
-    setCalculationList(allKeys);
-  };
+  useEffect(() => {
+    dispatch(getUserCalculationsAsync(userName))
+  })
 
   return (
     <div>
       <h1>Profile page</h1>
-      {calculationList ? (
-        <ul>
-          {calculationList.map((item, index) => {
-            return (
-              <li key={index}>
-                {item}
-                <Link to={`/calculation/${item}`}>See in details</Link>
-              </li>
-            );
-          })}
-        </ul>
+      {userCalculations ? (
+        <>
+          <h2>The list of your calculations:</h2>
+          <ul>
+            {userCalculations?.map((item, index) => {
+              return (
+                <li key={index}>
+                  {item.name}
+                  <Link to={`/calculation/${item.name}`}>See in details</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </>
       ) : (
-        <ComonBtn handleBtnClick={handleCalculationsList}>
-          Show my calculations
-        </ComonBtn>
-      )}
+        <h2>You did not save any calculation</h2>
+      )} 
     </div>
   );
 };

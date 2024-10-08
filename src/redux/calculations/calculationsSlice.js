@@ -1,24 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import * as calcAPI from '../../requests/calculationRequests';
 
 const initialState = {
-    value: 0,
+    calculations: []
 }
+
+export const getUserCalculationsAsync = createAsyncThunk(
+    "calculations/getUserCalculationsAsync",
+    async (userName) => {
+      const response = await calcAPI.getAllUserCalculations(userName);
+      return response.data;
+    }
+);
 
 const calculationSlice = createSlice({
     name: "calculation",
     initialState,
-    reducer: {
-        increment: (state) => {
-            state.value += 1;
-        },
-        decrement: (state) => {
-            state.value -= 1;
+    reducers: {
+        clearState: (state) => {
+            state.calculations = [];
         }
-
-    },
+   },
+   extraReducers: (builder) => {
+    builder.addCase(getUserCalculationsAsync.fulfilled, (state, action) => {
+        state.calculations = action.payload;
+    });
+   },
 });
 
-export const { increment, decrement} = calculationSlice.actions;
+export const { clearState } = calculationSlice.actions;
 
 export default calculationSlice.reducer;

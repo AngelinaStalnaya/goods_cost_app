@@ -1,51 +1,39 @@
 import axios from "axios";
 
-export const createCalculation = (calculation) => {
-  axios
-    .post("http://localhost:7000/api/calculations", calculation)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+export const createCalculation = async (calculation) => {
+  const response = await axios.post(
+    "http://localhost:7000/api/calculations",
+    calculation
+  );
+  return response;
 };
 
-export const getAllUserCalculations = (userId) => {
-  axios
-    .get(`http://localhost:7000/api/calculations/user/${userId}`)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.log(error));
+export const getAllUserCalculations = async (userName) => {
+  const response = await axios.get(
+    `http://localhost:7000/api/calculations/user/${userName}`
+  );
+  return response;
 };
 
-export const getCalculationData = (id) => {
-  axios
-    .get(`http://localhost:7000/api/calculations/${id}`)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.log(error));
+export const getCalculationData = async (id) => {
+  const response = await axios.get(
+    `http://localhost:7000/api/calculations/${id}`
+  );
+  return response;
 };
 
-export const updateCalculationData = (newCalculationData) => {
-  axios
-    .put(
-      `http://localhost:7000/api/calculations/${newCalculationData._id}`,
-      newCalculationData
-    )
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.log(error));
+export const updateCalculationData = async (newCalculationData) => {
+  const response = await axios.put(
+    `http://localhost:7000/api/calculations/${newCalculationData._id}`,
+    newCalculationData
+  );
+  return response;
 };
 
-export const deleteCalculation = (id) => {
-  axios
-    .delete(`http://localhost:7000/api/calculations/${id}`)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.log(error));
+export const deleteCalculation = async (id) => {
+  const response = await axios.delete(
+    `http://localhost:7000/api/calculations/${id}`
+  );
+  return response;
 };
+

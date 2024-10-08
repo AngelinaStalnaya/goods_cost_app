@@ -14,17 +14,17 @@ const CalculationForm = () => {
 
   const handleFieldChange = () => {
 
-    //   const project = {
-    //     name: `${calculationName}`,
-    //     tax_rate: taxRate,
-    //     ...basicCost,
-    //     ...additionalCost,
-    //     date: Date(),
-    //   };
+      const project = {
+        name: `${calculationName}`,
+        tax_rate: taxRate,
+        ...basicCost,
+        ...additionalCost,
+        date: Date(),
+      };
   
-    //   localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
-    //   setCalculationName("");
-    //   handleClose();
+      localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
+      setCalculationName("");
+      handleClose();
   }
 
   return (

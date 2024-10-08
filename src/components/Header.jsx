@@ -7,7 +7,7 @@ import * as Svgs from "../images/svg/SvgIcons";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({userName, authorized,  loggedOut}) => {
+const Header = ({userName, authorized,  loggedOut, clearState}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,6 +27,7 @@ const Header = ({userName, authorized,  loggedOut}) => {
                 aria_label="Sign out"
                 handleBtnClick={() => {
                   dispatch(loggedOut());
+                  dispatch(clearState())
                 }}
               >
                 <SvgIcon component={Svgs.LockIcon} inheritViewBox />
