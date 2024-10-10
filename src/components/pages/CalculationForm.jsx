@@ -1,36 +1,30 @@
-import React from "react";
-import FormData from "../formdata/FormData";
+import React, { useEffect } from "react";
 import ComonBtn from "../buttons/ComonBtn";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import FormDataWrapper from "../formdata/FormDatawrapper";
 
-const CalculationForm = () => {
-
-  const {projectName} = useParams();
-
-  const projectData = localStorage.getItem("project_" + projectName);
-
+const CalculationForm = ({
+  authorized,
+  currentCalculation,
+  getCalculationDataAsync,
+}) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authorized) navigate("/");
+  });
+
   const handleBackBtnClick = () => navigate(-1);
-
-  const handleFieldChange = () => {
-
-      const project = {
-        name: `${calculationName}`,
-        tax_rate: taxRate,
-        ...basicCost,
-        ...additionalCost,
-        date: Date(),
-      };
-  
-      localStorage.setItem(`project_${calculationName}`, JSON.stringify(project));
-      setCalculationName("");
-      handleClose();
-  }
+  const { state } = useLocation();
 
   return (
     <div>
       <ComonBtn handleBtnClick={handleBackBtnClick}>Go back</ComonBtn>
-      <FormData fieldData={projectData} handleChange={handleFieldChange}/>
+      <FormDataWrapper
+        currentCalculation={currentCalculation}
+        id={state.id}
+        getCalculationDataAsync={getCalculationDataAsync}
+      />
     </div>
   );
 };

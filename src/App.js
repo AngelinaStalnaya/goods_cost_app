@@ -6,7 +6,9 @@ import Footer from "./components/Footer";
 import RoutesComponent from "./components/pages/Routes";
 import { useSelector } from "react-redux";
 import { loggedOut, loggedInAsync } from "./redux/user/userSlice";
-import {clearState} from './redux/calculations/calculationsSlice';
+import {clearState, getUserCalculationsAsync} from './redux/calculations/calculationsListSlice';
+import {getCalculationDataAsync, clearCalculationState } from './redux/calculations/calculationSlice';
+
 
 const App = () => {
   const userName = useSelector((AppSelector) => AppSelector.user.name);
@@ -16,8 +18,11 @@ const App = () => {
   const userId = useSelector((AppSelector) => AppSelector.user.id);
 
   const userCalculations = useSelector(
-    (AppSelector) => AppSelector.calculations.calculations
+    (AppSelector) => AppSelector.calculationsList.calculations
   );
+
+  const currentCalculation = useSelector((AppSelector) => AppSelector.calculation)
+
 
   return (
     <div className="App">
@@ -28,6 +33,7 @@ const App = () => {
             authorized={authorized}
             loggedOut={loggedOut}
             clearState={clearState}
+            clearCalculationState={clearCalculationState}
           />
         </Grid>
 
@@ -39,6 +45,9 @@ const App = () => {
             loggedInAsync={loggedInAsync}
             userId={userId}
             userCalculations={userCalculations}
+            currentCalculation={currentCalculation}
+            getCalculationDataAsync={getCalculationDataAsync}
+            getUserCalculationsAsync={getUserCalculationsAsync}
           />
         </Grid>
 

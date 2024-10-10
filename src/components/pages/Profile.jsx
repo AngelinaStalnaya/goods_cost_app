@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {useDispatch} from 'react-redux'
-import { getUserCalculationsAsync } from "../../redux/calculations/calculationsSlice";
 
-const Profile = ({ authorized, userCalculations, userName }) => {
+const Profile = ({ authorized, userCalculations, userName,getUserCalculationsAsync  }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,7 +25,7 @@ const Profile = ({ authorized, userCalculations, userName }) => {
               return (
                 <li key={index}>
                   {item.name}
-                  <Link to={`/calculation/${item.name}`}>See in details</Link>
+                  <Link to={`/calculation/${item.name}`} state={{id: item._id}}>See in details</Link>
                 </li>
               );
             })}

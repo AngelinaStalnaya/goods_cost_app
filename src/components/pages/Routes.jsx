@@ -12,6 +12,9 @@ const RoutesComponent = ({
   loggedInAsync,
   userName,
   userCalculations,
+  currentCalculation,
+  getCalculationDataAsync,
+  getUserCalculationsAsync
 }) => {
   return (
     <>
@@ -27,10 +30,20 @@ const RoutesComponent = ({
               authorized={authorized}
               userCalculations={userCalculations}
               userName={userName}
+              getUserCalculationsAsync={getUserCalculationsAsync}
             />
           }
         />
-        <Route path="/calculation/:projectName" element={<CalculationForm />} />
+        <Route
+          path="/calculation/:projectName"
+          element={
+            <CalculationForm
+              authorized={authorized}
+              currentCalculation={currentCalculation}
+              getCalculationDataAsync={getCalculationDataAsync}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={<SignUp loggedInAsync={loggedInAsync} />}

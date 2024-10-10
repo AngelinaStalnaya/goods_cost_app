@@ -6,15 +6,15 @@ const initialState = {
 }
 
 export const getUserCalculationsAsync = createAsyncThunk(
-    "calculations/getUserCalculationsAsync",
+    "calculationsList/getUserCalculationsAsync",
     async (userName) => {
       const response = await calcAPI.getAllUserCalculations(userName);
       return response.data;
     }
 );
 
-const calculationSlice = createSlice({
-    name: "calculation",
+const calculationsListSlice = createSlice({
+    name: "calculationsList",
     initialState,
     reducers: {
         clearState: (state) => {
@@ -28,6 +28,6 @@ const calculationSlice = createSlice({
    },
 });
 
-export const { clearState } = calculationSlice.actions;
+export const { clearState } = calculationsListSlice.actions;
 
-export default calculationSlice.reducer;
+export default calculationsListSlice.reducer;

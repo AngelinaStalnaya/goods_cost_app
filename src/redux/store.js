@@ -1,11 +1,14 @@
 import {configureStore,} from '@reduxjs/toolkit';
-import calculationReducer from './calculations/calculationsSlice';
+import calculationsListReducer from './calculations/calculationsListSlice';
 import userReducer from './user/userSlice';
+import calculationReducer from './calculations/calculationSlice';
+
 
 export const store = configureStore({
     reducer: {
-        calculations: calculationReducer,
+        calculationsList: calculationsListReducer,
         user: userReducer,
+        calculation: calculationReducer,
     },
 
 }); 

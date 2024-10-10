@@ -36,4 +36,3 @@ export const deleteCalculation = async (id) => {
   );
   return response;
 };
-
