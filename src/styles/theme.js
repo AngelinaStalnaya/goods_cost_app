@@ -16,31 +16,32 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     error: {
-      main: colors.wine.main
+      main: colors.wine[900]
     },
     warning: { 
-      main: colors.terracot.main,
+      main: colors.wine[400],
     },
     info: {
-      main: colors.marshmallows.main,
+      main: colors.mint[700],
     },
     success: {
-      main: colors.mint.main,
+      main: colors.terracot[500],
     }
   },
   typography: {
     fontFamily: 'Comfortaa',
-    fontSize: 14,
+    fontSize: 17,
 
     h1: {
-        fontSize: 20,
-        color: colors.purple[500],
+        fontSize: 40,
+        fontWeight: 700,
+        color: colors.purple[900],
     },
     h2: {
-        fontSize: 16,
+        fontSize: 25,
     },
     button: {
-        fontSize: 15,
+        fontSize: 20,
     }
   },
   components: {},

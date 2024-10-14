@@ -7,6 +7,7 @@ import ModalComponent from "../modal/ModalComponent";
 import InputWithLabel from "../input/InputWithLabel";
 import * as initialState from "../calculator/initialStates";
 import * as requests from "../../requests/calculationRequests";
+import Loader from '../loader/Loader';
 
 const Calculator = ({ authorized, userName }) => {
   const [basicCost, setBasicCost] = useState(initialState.basicCost);
@@ -88,8 +89,10 @@ const Calculator = ({ authorized, userName }) => {
       ...additionalCost,
       date: newDate.toLocaleDateString(),
     };
-    // add loader
-    await requests.createCalculation(project);
+    const response = await requests.createCalculation(project);
+    while(!response) {
+      <Loader/>
+    } 
     setCalculationName("");
     handleCloseModal();
   };
@@ -102,9 +105,8 @@ const Calculator = ({ authorized, userName }) => {
 
   return (
     <>
-      <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
-
       <Typography className="section__header">
+      <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
         Handmade Goods Cost Calculator
       </Typography>
       <Typography className="section__descr">
@@ -123,6 +125,7 @@ const Calculator = ({ authorized, userName }) => {
           name="hours"
           value={basicCost.hours}
           handleChangeInput={handleBasicCalcInput}
+          component={Svgs.ClockIcon}
         />
 
         <InputWithLabel

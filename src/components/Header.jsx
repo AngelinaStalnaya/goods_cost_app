@@ -16,9 +16,9 @@ const Header = ({userName, authorized,  loggedOut, clearState, clearCalculationS
       <Grid container className="header">
         <Grid size={12} className="header__name">
           <Link to="/">
-            <SvgIcon component={Svgs.BasicIcon} inheritViewBox />
+            <SvgIcon component={Svgs.BasicIcon} inheritViewBox sx={{width: '3em', height: '3em'}}/>
           </Link>
-          Handmade Goods Calculator
+          Handmade Goods Cost Calculator
         </Grid>
         <Grid size={12} className="header__navigation">
           {authorized ? (
@@ -31,13 +31,13 @@ const Header = ({userName, authorized,  loggedOut, clearState, clearCalculationS
                   dispatch(clearCalculationState())
                 }}
               >
-                <SvgIcon component={Svgs.LockIcon} inheritViewBox />
+                <SvgIcon component={Svgs.LockIcon} inheritViewBox sx={{width: '2em', height: '2em'}}/>
                 Sign Out
               </IconBtn>
 
               <IconBtn>
                 <Link to="/profile">
-                  <SvgIcon component={Svgs.ProfileMen} inheritViewBox />
+                  <SvgIcon component={Svgs.ProfileMen} inheritViewBox sx={{width: '2em', height: '2em'}}/>
                   {userName}
                 </Link>
               </IconBtn>
@@ -50,7 +50,7 @@ const Header = ({userName, authorized,  loggedOut, clearState, clearCalculationS
                   return navigate("/signup");
                 }}
               >
-                <SvgIcon component={Svgs.LockIcon} inheritViewBox />
+                <SvgIcon component={Svgs.LockIcon} inheritViewBox sx={{width: '2em', height: '2em'}}/>
                 Sign Up
               </IconBtn>
               <IconBtn
@@ -59,7 +59,7 @@ const Header = ({userName, authorized,  loggedOut, clearState, clearCalculationS
                   return navigate("/login");
                 }}
               >
-                <SvgIcon component={Svgs.KeyIcon} inheritViewBox />
+                <SvgIcon component={Svgs.KeyIcon} inheritViewBox sx={{width: '2em', height: '2em'}}/>
                 Log In
               </IconBtn>
             </>
