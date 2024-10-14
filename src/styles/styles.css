@@ -199,3 +199,9 @@
 .calculation_data {
   list-style: circle;
 }
+
+
+.formdata_results {
+  display:flex;
+  flex-direction: column;
+}

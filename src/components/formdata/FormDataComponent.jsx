@@ -8,13 +8,14 @@ const FormDataComponent = ({
   id,
   getCalculationDataAsync,
   handleUpdateCalculation,
-  deleteCalculation
+  deleteCalculation,
+  basicResult, additionalResult, taxRate, totalCost
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCalculationDataAsync(id));
-  });
+  }); 
 
   return (
     <div className="formData">
@@ -69,6 +70,7 @@ const FormDataComponent = ({
         </li>
       </ul>
 
+
       <form
         id="update_calculation"
         className="form_updateCalculation"
@@ -106,8 +108,18 @@ const FormDataComponent = ({
         />
         <button type="submit">Submit</button>
       </form>
-
-
+      <div className='formdata_results'>
+      <Typography className="basicCosts">
+        Materials and work: {basicResult}
+      </Typography>
+      <Typography className="additionals">
+        Additional costs: {additionalResult}
+      </Typography>
+      <Typography className="taxes">
+        Tax rate (%): {taxRate}
+      </Typography>
+      <Typography className="totalCost">Total: {totalCost || 0} </Typography>
+      </div>
       <ComonBtn handleBtnClick={deleteCalculation}>Delete calculation</ComonBtn>
     </div>
   );
