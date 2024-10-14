@@ -7,6 +7,8 @@ const CalculationForm = ({
   authorized,
   currentCalculation,
   getCalculationDataAsync,
+  updateCalculationDataAsync,
+  deleteCalculationAsync
 }) => {
   const navigate = useNavigate();
 
@@ -24,6 +26,8 @@ const CalculationForm = ({
         currentCalculation={currentCalculation}
         id={state.id}
         getCalculationDataAsync={getCalculationDataAsync}
+        updateCalculationDataAsync={updateCalculationDataAsync}
+        deleteCalculationAsync={deleteCalculationAsync}
       />
     </div>
   );

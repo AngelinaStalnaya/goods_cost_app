@@ -219,11 +219,7 @@ const Calculator = ({ authorized, userName }) => {
 
       <Divider />
       <Box className="calculation__btns">
-        {authorized ? (
-          <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>
-        ) : (
-          ""
-        )}
+        {authorized && <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>}
 
         <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
       </Box>

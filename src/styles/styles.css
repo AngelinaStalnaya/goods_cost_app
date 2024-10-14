@@ -100,7 +100,7 @@
   border-radius: 5px;
 }
 
-.sidebar__link { 
+.sidebar__link {
   color: var(--purple_500);
   border-radius: 5px;
   min-height: 25px;
@@ -131,7 +131,6 @@
   font-size: 40px;
   font-weight: 600;
   color: var(--purple_700);
-
 }
 
 .section__descr {
@@ -146,7 +145,9 @@
   padding: 0;
 }
 
-.basicCosts, .additionals, .taxes {
+.basicCosts,
+.additionals,
+.taxes {
   display: flex;
   justify-content: flex-start;
 }
@@ -156,7 +157,6 @@
   display: flex;
   justify-content: flex-end;
 }
-
 
 .modal__save {
   position: relative;
@@ -175,7 +175,7 @@
 }
 
 .header__icon-link {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -183,4 +183,19 @@
 .formdata__box {
   display: flex;
   justify-content: space-between;
+}
+
+.formData {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+
+.form_updateCalculation {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculation_data {
+  list-style: circle;
 }

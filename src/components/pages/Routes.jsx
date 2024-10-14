@@ -14,7 +14,9 @@ const RoutesComponent = ({
   userCalculations,
   currentCalculation,
   getCalculationDataAsync,
-  getUserCalculationsAsync
+  getUserCalculationsAsync,
+  updateCalculationDataAsync,
+  deleteCalculationAsync
 }) => {
   return (
     <>
@@ -41,6 +43,8 @@ const RoutesComponent = ({
               authorized={authorized}
               currentCalculation={currentCalculation}
               getCalculationDataAsync={getCalculationDataAsync}
+              updateCalculationDataAsync={updateCalculationDataAsync}
+              deleteCalculationAsync={deleteCalculationAsync}
             />
           }
         />

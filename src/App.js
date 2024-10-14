@@ -7,7 +7,7 @@ import RoutesComponent from "./components/pages/Routes";
 import { useSelector } from "react-redux";
 import { loggedOut, loggedInAsync } from "./redux/user/userSlice";
 import {clearState, getUserCalculationsAsync} from './redux/calculations/calculationsListSlice';
-import {getCalculationDataAsync, clearCalculationState } from './redux/calculations/calculationSlice';
+import {getCalculationDataAsync, clearCalculationState, updateCalculationDataAsync, deleteCalculationAsync } from './redux/calculations/calculationSlice';
 
 
 const App = () => {
@@ -48,6 +48,8 @@ const App = () => {
             currentCalculation={currentCalculation}
             getCalculationDataAsync={getCalculationDataAsync}
             getUserCalculationsAsync={getUserCalculationsAsync}
+            updateCalculationDataAsync={updateCalculationDataAsync}
+            deleteCalculationAsync={deleteCalculationAsync}
           />
         </Grid>
 

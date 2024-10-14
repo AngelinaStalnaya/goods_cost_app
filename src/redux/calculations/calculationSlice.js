@@ -63,7 +63,17 @@ const calculationSlice = createSlice({
         state.id = action.payload._id;
       })
       .addCase(updateCalculationDataAsync.fulfilled, (state, action) => {
-        state = action.payload;
+        state.hours = action.payload.hours;
+        state.payment = action.payload.payment;
+        state.materials = action.payload.materials;
+        state.delivery = action.payload.delivery;
+        state.packaging = action.payload.packaging;
+        state.tax_rate = action.payload.tax_rate;
+        state.additional_costs = action.payload.additional_costs;
+        state.equipment = action.payload.equipment;
+        state.name = action.payload.name;
+        state.date = action.payload.date;
+        state.id = action.payload._id;
       })
       .addCase(deleteCalculationAsync.fulfilled, (state) => {
         state = initialState;
