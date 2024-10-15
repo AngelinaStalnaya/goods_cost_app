@@ -29,7 +29,6 @@ const App = () => {
       <Grid container spacing={2}>
         <Grid size={12}>
           <Header
-            userName={userName}
             authorized={authorized}
             loggedOut={loggedOut}
             clearState={clearState}

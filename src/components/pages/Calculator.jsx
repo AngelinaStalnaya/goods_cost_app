@@ -106,7 +106,6 @@ const Calculator = ({ authorized, userName }) => {
   return (
     <>
       <Typography className="section__header">
-      <SvgIcon component={Svgs.CalculatorIcon} inheritViewBox />
         Handmade Goods Cost Calculator
       </Typography>
       <Typography className="section__descr">
@@ -125,7 +124,6 @@ const Calculator = ({ authorized, userName }) => {
           name="hours"
           value={basicCost.hours}
           handleChangeInput={handleBasicCalcInput}
-          component={Svgs.ClockIcon}
         />
 
         <InputWithLabel
@@ -224,7 +222,7 @@ const Calculator = ({ authorized, userName }) => {
       <Box className="calculation__btns">
         {authorized && <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>}
 
-        <ComonBtn handleBtnClick={handleFormClear}>Clear all</ComonBtn>
+        <ComonBtn handleBtnClick={handleFormClear} variant='outlined'>Clear all</ComonBtn>
       </Box>
       <ModalComponent
         className="modal__save"

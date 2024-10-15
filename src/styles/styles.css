@@ -31,14 +31,13 @@
   --marshmallows_700: #cd0062;
   --marshmallows_800: #b8005f;
   --marshmallows_900: #910059;
-
 }
 
 .App {
   padding: 10px;
   margin: 25px;
   border-radius: 5px;
-  background-color: var(--marshmallows_100);
+  background-color: var(--marshmallows_50);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -50,6 +49,26 @@
   background-color: var(--purple_200);
   display: flex;
   justify-content: space-between;
+  border-radius: 10px;
+}
+
+.header__name {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__navigation {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.header__icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
 }
 
 .footer {
@@ -61,38 +80,11 @@
   background-color: var(--green_600);
 }
 
-
-.sidebar__link {
-  color: var(--purple_500);
-  border-radius: 5px;
-  min-height: 25px;
-  padding-left: 15px;
-  text-decoration: none;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-
-  &:focus {
-    color: var(--green_50);
-    background-color: var(--green_800);
-  }
-
-  &:hover {
-    color: var(--purple_50);
-    background-color: var(--purple_600);
-  }
-
-  &:active {
-    color: var(--marshmallows_50);
-    background-color: var(--marshmallows_700);
-  }
-}
-
 .section__header {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
-  color: var(--purple_700);
+  color: var(--purple_500);
+  font-family: "Comfortaa";
 }
 
 .section__descr {
@@ -144,31 +136,31 @@
 }
 
 @keyframes headerIconAnim {
-	0%,
-	100% {
-		transform: translateX(0%);
-		transform-origin: 50% 50%;
-	}
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
 
-	15% {
-		transform: translateX(-30px) rotate(-6deg);
-	}
+  15% {
+    transform: translateX(-30px) rotate(-6deg);
+  }
 
-	30% {
-		transform: translateX(15px) rotate(6deg);
-	}
+  30% {
+    transform: translateX(15px) rotate(6deg);
+  }
 
-	45% {
-		transform: translateX(-15px) rotate(-3.6deg);
-	}
+  45% {
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
 
-	60% {
-		transform: translateX(9px) rotate(2.4deg);
-	}
+  60% {
+    transform: translateX(9px) rotate(2.4deg);
+  }
 
-	75% {
-		transform: translateX(-6px) rotate(-1.2deg);
-	}
+  75% {
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
 }
 
 .formdata__box {
@@ -191,9 +183,8 @@
   list-style: circle;
 }
 
-
 .formdata_results {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -206,20 +197,19 @@
 }
 
 .loader {
-  animation: loaderAnim 4s linear infinite  0s normal none;
+  animation: loaderAnim 4s linear infinite 0s normal none;
 }
 
 @keyframes loaderAnim {
-	0%{
-		transform: rotate(0deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
 
-	50% {
-		transform: rotate(180deg);
-	}
+  50% {
+    transform: rotate(180deg);
+  }
 
-	
-	100% {
-		transform: rotate(0deg);
-	}
+  100% {
+    transform: rotate(0deg);
+  }
 }

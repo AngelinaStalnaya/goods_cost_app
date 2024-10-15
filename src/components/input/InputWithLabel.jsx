@@ -11,12 +11,10 @@ const InputWithLabel = ({
   name,
   value,
   handleChangeInput,
-  component
 }) => {
   return (
     <>
       <InputLabel htmlFor={id} className="input__label">
-      <SvgIcon component={component} inheritViewBox />
 
         {labelText}
       </InputLabel>
