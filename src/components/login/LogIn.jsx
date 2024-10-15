@@ -1,20 +1,39 @@
 import React from "react";
+import { Typography } from "@mui/material";
 
-const LogIn = ({handleFormSubmit}) => {
-
+const LogIn = ({ handleFormSubmit }) => {
   return (
     <>
-      <div>Log in with your password:</div>
-      <form id="logInForm" onSubmit={handleFormSubmit}>
-        <label htmlFor="login">Enter login</label>
-        <input id="login" name="login" required type="text"></input>
+      <Typography className="section__header" sx={{ fontSize: "25px" }}>
+        Log in with your password:
+      </Typography>
+      <form id="logInForm" onSubmit={handleFormSubmit} className="form__auth">
+        <label htmlFor="login" className="input__label">
+          Enter login:
+        </label>
+        <input
+          id="login"
+          name="login"
+          required
+          type="text"
+          className="input"
+        ></input>
 
-        <label htmlFor="password">Enter password</label>
-        <input id="password" name="password" type="password" required></input>
+        <label htmlFor="password" className="input__label">
+          Enter password:
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          className="input"
+        ></input>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="input__btn">
+          Submit
+        </button>
       </form>
-
     </>
   );
 };

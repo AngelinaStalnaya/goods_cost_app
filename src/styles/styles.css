@@ -81,22 +81,73 @@
 }
 
 .section__header {
-  font-size: 30px;
-  font-weight: 600;
   color: var(--purple_500);
-  font-family: "Comfortaa";
+  margin-bottom: 15px;
 }
 
 .section__descr {
   margin-bottom: 20px;
 }
 
+.form__auth {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 25px;
+  max-width: 500px;
+}
+
 .input {
-  color: #008f00;
+  color: var(--green_800);
+  max-width: 300px;
+  overflow: scroll;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid var(--green_800);
+  background-color: var(--green_100);
+  font-size: 20px;
+  line-height: 25px;
+  margin-left: 50px;
+  transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:is(:hover, :active) {
+    border: 2px solid var(--marshmallows_400);
+    color: var(--purple_600);
+  }
+
+  &:focus {
+    border: 2px solid var(--purple_400);
+    color: var(--marshmallows_400);
+  }
 }
 
 .input__label {
   padding: 0;
+  font-size: 20px;
+}
+
+.input__btn {
+  color: var(--marshmallows_400);
+  max-width: 100px;
+  padding: 3px;
+  border-radius: 10px;
+  border: 2px solid var(--marshmallows_400);
+  background-color: var(--marshmallows_50);
+  font-size: 20px;
+  line-height: 25px;
+  margin-left: 50px;
+  margin-top: 10px;
+  transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:is(:hover, :active) {
+    border: 2px solid var(--purple_600);
+    color: var(--purple_600);
+  }
+
+  &:focus {
+    border: 2px solid var(--green_800);
+    color: var(--green_800);
+  }
 }
 
 .basicCosts,

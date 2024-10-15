@@ -26,7 +26,7 @@ const Header = ({
               sx={{ width: "3em", height: "3em"}}
             />
           </Link>
-          <Typography sx={{fontSize: '30px',  }}>Handmade Goods Cost Calculator</Typography>
+          <Typography sx={{fontSize: '30px'}}>Handmade Goods Cost Calculator</Typography>
         </Grid>
         <Grid size={5} className="header__navigation" >
           {authorized ? (
