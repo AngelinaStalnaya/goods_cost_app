@@ -278,10 +278,10 @@
 
 .error_page {
   width: 100%;
-  height: 100vh;
-  background: #6923af;
-  color: var(--wine_100);
-  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader {
