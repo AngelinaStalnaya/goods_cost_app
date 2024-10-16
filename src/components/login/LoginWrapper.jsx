@@ -3,8 +3,10 @@ import Login from "./LogIn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { findUser } from "../../requests/userRequests";
+import { loggedInAsync } from "../../redux/user/userSlice";
 
-const LoginWrapper = ({ loggedInAsync }) => {
+
+const LoginWrapper = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -13,7 +15,7 @@ const LoginWrapper = ({ loggedInAsync }) => {
 
     const data = Object.fromEntries(new FormData(e.target));
     const response = await findUser(data);
-    
+
     if (response === null) {
       alert("Wrong login or password. Please, try again!");
     } else {

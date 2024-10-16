@@ -4,7 +4,7 @@ import Calculator from "./Calculator";
 import Profile from "./Profile";
 import Error from "./Error";
 import CalculationForm from "./CalculationForm";
-import SignUp from "../signup/SignUp";
+import SignUpWrapper from "../signup/SignUpWrapper";
 import LoginWrapper from "../login/LoginWrapper";
 
 const RoutesComponent = ({
@@ -50,11 +50,11 @@ const RoutesComponent = ({
         />
         <Route
           path="/signup"
-          element={<SignUp loggedInAsync={loggedInAsync} />}
+          element={<SignUpWrapper />}
         />
         <Route
           path="/login"
-          element={<LoginWrapper loggedInAsync={loggedInAsync} />}
+          element={<LoginWrapper/>}
         />
 
         <Route path="*" element={<Error />} />

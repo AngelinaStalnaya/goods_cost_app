@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Typography, FormGroup, Divider, SvgIcon, Box } from "@mui/material";
+import { Typography, FormGroup, Divider, Box } from "@mui/material";
 import ComonBtn from "../buttons/ComonBtn";
-import * as Svgs from "../../images/svg/SvgIcons";
 import ModalComponent from "../modal/ModalComponent";
 import InputWithLabel from "../input/InputWithLabel";
 import * as initialState from "../calculator/initialStates";
