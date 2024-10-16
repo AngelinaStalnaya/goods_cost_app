@@ -1,15 +1,17 @@
 import React from "react";
-import { findUser, createUser } from "../requests/userRequests";
+import SignUp from "./SignUp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { findUser, createUser } from "../../requests/userRequests";
+import { loggedInAsync } from "../../redux/user/userSlice";
 
-const SignUp = ({loggedInAsync}) => {
+
+const SignUpWrapper = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
 
     const data = Object.fromEntries(new FormData(e.target));
     if (data.password1 !== data.password2) {
@@ -26,7 +28,7 @@ const SignUp = ({loggedInAsync}) => {
         login: data.login,
         password: data.password1,
         sex: data?.sex,
-      }
+      };
 
       const response = await findUser(userToFind);
 
@@ -44,26 +46,7 @@ const SignUp = ({loggedInAsync}) => {
     }
   };
 
-  return (
-    <>
-      <div>Registration Page</div>
-      <form id="signUpForm" onSubmit={handleFormSubmit}>
-        <label htmlFor="name">Enter your name:</label>
-        <input id="name" name="name" required></input>
-
-        <label htmlFor="login">Enter your login:</label>
-        <input id="login" name="login" required></input>
-
-        <label htmlFor="password1">Enter your password:</label>
-        <input id="password1" name="password1" type="password" required></input>
-
-        <label htmlFor="password2">Repeat your password:</label>
-        <input id="password2" name="password2" type="password" required></input>
-
-        <button type="submit">Submit</button>
-      </form>
-    </>
-  );
+  return <SignUp handleFormSubmit={handleFormSubmit}/>;
 };
 
-export default SignUp;
+export default SignUpWrapper;

@@ -4,7 +4,7 @@ import Calculator from "./Calculator";
 import Profile from "./Profile";
 import Error from "./Error";
 import CalculationForm from "./CalculationForm";
-import SignUp from "../SignUp";
+import SignUp from "../signup/SignUp";
 import LoginWrapper from "../login/LoginWrapper";
 
 const RoutesComponent = ({
