@@ -25,7 +25,7 @@ const App = () => {
 
 
   return (
-    <div className="App" sx={{p: '10px', }}>
+    <div className="App">
       <Grid container spacing={2}>
         <Grid size={12}>
           <Header
