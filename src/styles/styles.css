@@ -119,11 +119,6 @@
 
 .section__header {
   color: var(--purple_500);
-  margin-bottom: 15px;
-}
-
-.section__descr {
-  margin-bottom: 20px;
 }
 
 .form__auth {
@@ -187,16 +182,16 @@
   }
 }
 
-.basicCosts,
-.additionals,
-.taxes {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .totalCost {
   font-size: 50px;
   display: flex;
+  justify-content: flex-end;
+  color: var(--marshmallows_700);
+}
+
+.calculation__btns {
+  display: flex;
+  gap: 10px;
   justify-content: flex-end;
 }
 

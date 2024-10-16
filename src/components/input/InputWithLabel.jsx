@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel, Input, SvgIcon } from "@mui/material";
+import { InputLabel, Input } from "@mui/material";
 
 const InputWithLabel = ({
   id,
@@ -15,7 +15,6 @@ const InputWithLabel = ({
   return (
     <>
       <InputLabel htmlFor={id} className="input__label">
-
         {labelText}
       </InputLabel>
       <Input

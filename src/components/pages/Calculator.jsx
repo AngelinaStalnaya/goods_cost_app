@@ -6,7 +6,6 @@ import ModalComponent from "../modal/ModalComponent";
 import InputWithLabel from "../input/InputWithLabel";
 import * as initialState from "../calculator/initialStates";
 import * as requests from "../../requests/calculationRequests";
-import Loader from '../loader/Loader';
 
 const Calculator = ({ authorized, userName }) => {
   const [basicCost, setBasicCost] = useState(initialState.basicCost);
@@ -88,10 +87,9 @@ const Calculator = ({ authorized, userName }) => {
       ...additionalCost,
       date: newDate.toLocaleDateString(),
     };
-    const response = await requests.createCalculation(project);
-    while(!response) {
-      <Loader/>
-    } 
+
+    await requests.createCalculation(project);
+
     setCalculationName("");
     handleCloseModal();
   };
@@ -104,12 +102,14 @@ const Calculator = ({ authorized, userName }) => {
 
   return (
     <>
-      <Typography className="section__header">
+      <Typography
+        className="section__header"
+        sx={{ fontSize: "25px", mb: "15px" }}
+      >
         Handmade Goods Cost Calculator
       </Typography>
-      <Typography className="section__descr">
-        This is a simple calculator for defining handmade goods cost. Simply
-        fill in the following inputs and receive final calculations.
+      <Typography sx={{ mb: "20px" }}>
+        This is a simple calculator for defining handmade goods cost. Fill in the following inputs and receive final calculations.
       </Typography>
 
       <FormGroup>
@@ -205,23 +205,29 @@ const Calculator = ({ authorized, userName }) => {
         />
       </FormGroup>
 
-      <Typography className="basicCosts">
+      <Typography className="basicCosts" sx={{ fontSize: "20px" }}>
         Materials and work: {basicResult}
       </Typography>
-      <Typography className="additionals">
+      <Typography className="additionals" sx={{ fontSize: "20px" }}>
         Additional costs: {additionalResult}
       </Typography>
-      <Typography className="taxes">
+      <Typography className="taxes" sx={{ fontSize: "20px" }}>
         Tax rate (%): {taxRate.tax_rate}
       </Typography>
 
-      <Typography className="totalCost">Total: {totalCost || 0} </Typography>
+      <Typography className="totalCost" sx={{ fontSize: "35px" }}>
+        Total: {totalCost || 0}{" "}
+      </Typography>
 
-      <Divider />
+      <Divider sx={{mb: '10px'}}/>
       <Box className="calculation__btns">
-        {authorized && <ComonBtn handleBtnClick={handleOpenModal}>Save calculation</ComonBtn>}
+        {authorized && (
+          <ComonBtn handleBtnClick={handleOpenModal} variant="contained">Save calculation</ComonBtn>
+        )}
 
-        <ComonBtn handleBtnClick={handleFormClear} variant='outlined'>Clear all</ComonBtn>
+        <ComonBtn handleBtnClick={handleFormClear} variant="contained">
+          Clear all
+        </ComonBtn>
       </Box>
       <ModalComponent
         className="modal__save"
