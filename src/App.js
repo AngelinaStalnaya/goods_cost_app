@@ -11,7 +11,6 @@ const App = () => {
   const authorized = useSelector(
     (AppSelector) => AppSelector.user.isAuthorized
   );
-  const userId = useSelector((AppSelector) => AppSelector.user.id);
 
   const userCalculations = useSelector(
     (AppSelector) => AppSelector.calculationsList.calculations
@@ -32,7 +31,6 @@ const App = () => {
           <RoutesComponent
             userName={userName}
             authorized={authorized}
-            userId={userId}
             userCalculations={userCalculations}
             currentCalculation={currentCalculation}
           />
