@@ -3,7 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserCalculationsAsync } from "../../redux/calculations/calculationsListSlice";
 import { Typography, SvgIcon } from "@mui/material";
-import { InfoIcon } from "../../images/svg/SvgIcons";
+import { InfoIcon, CalculatorIcon } from "../../images/svg/SvgIcons";
+import IconBtn from "../buttons/IconBtn";
 
 const Profile = ({ authorized, userCalculations, userName }) => {
   const navigate = useNavigate();
@@ -17,9 +18,13 @@ const Profile = ({ authorized, userCalculations, userName }) => {
     dispatch(getUserCalculationsAsync(userName));
   });
 
+  const handleCalculatorClick = () => {
+    navigate('/')
+  }
+
   return (
     <>
-      {userCalculations ? (
+      {userCalculations.length !== 0 ? (
         <>
           <Typography
             sx={{ fontSize: "25px", mb: "20px" }}
@@ -28,7 +33,7 @@ const Profile = ({ authorized, userCalculations, userName }) => {
             The list of your calculations:
           </Typography>
           <ul className="list">
-            {userCalculations?.map((item, index) => {
+            {userCalculations.map((item, index) => {
               return (
                 <li key={index} className="list__item">
                   <SvgIcon component={InfoIcon} inheritViewBox />
@@ -46,12 +51,22 @@ const Profile = ({ authorized, userCalculations, userName }) => {
           </ul>
         </>
       ) : (
-        <Typography
-          sx={{ fontSize: "25px", mb: "20px" }}
-          className="section__header"
-        >
-          You did not save any calculation
-        </Typography>
+        <>
+          <Typography
+            sx={{ fontSize: "25px", mb: "20px" }}
+            className="section__header"
+          >
+            You have not save any calculation
+          </Typography>
+          <IconBtn handleBtnClick={handleCalculatorClick}>
+            <SvgIcon
+              component={CalculatorIcon}
+              className="basic__icon"
+              inheritViewBox
+            />
+            Go to Calculator
+          </IconBtn>
+        </>
       )}
     </>
   );
