@@ -66,7 +66,8 @@
 }
 
 .header__icon,
-.footer__icon {
+.footer__icon,
+.basic__icon {
   width: 1em;
   height: 1em;
   margin-right: 5px;
@@ -119,6 +120,8 @@
 
 .section__header {
   color: var(--purple_500);
+  display: flex;
+  align-items: center;
 }
 
 .form__auth {
@@ -245,8 +248,10 @@
 .formData {
   display: flex;
   align-items: flex-start; 
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 0 30px;
 }
 
 .form_updateCalculation {
@@ -256,7 +261,8 @@
 }
 
 .calculation_data {
-  list-style: circle;
+  list-style: none;
+  margin-top: 0;
 }
 
 .formdata_results {

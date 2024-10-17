@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Box} from "@mui/material";
 
-const ModalComponent = ({className, aria_label, children, open, handleCloseModal, handleOpenModal}) => {
+const ModalComponent = ({className, aria_label, children, open, handleCloseModal}) => {
 
   return (
     <Modal

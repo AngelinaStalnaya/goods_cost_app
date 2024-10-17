@@ -33,10 +33,12 @@ const FormDataWrapper = ({ currentCalculation, id }) => {
       },
       {}
     );
+    const newDate =new Date();
 
     const updatedData = {
       ...dataToPass,
       _id: id,
+      date: newDate.toLocaleDateString(), 
     };
 
     dispatch(updateCalculationDataAsync(updatedData));

@@ -204,14 +204,15 @@ const Calculator = ({ authorized, userName }) => {
           handleChangeInput={handleAdditionalCalcInput}
         />
       </FormGroup>
+      <Divider  sx={{mb:'15px'}}/>
 
-      <Typography className="basicCosts" sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize: "20px" }}>
         Materials and work: {basicResult}
       </Typography>
-      <Typography className="additionals" sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize: "20px" }}>
         Additional costs: {additionalResult}
       </Typography>
-      <Typography className="taxes" sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize: "20px" }}>
         Tax rate (%): {taxRate.tax_rate}
       </Typography>
 
@@ -232,8 +233,7 @@ const Calculator = ({ authorized, userName }) => {
         className="modal__save"
         aria_label="Modal save calculation"
         open={open}
-        handleCloseModal
-        handleOpenModal
+        handleCloseModal={handleCloseModal}
       >
         <FormGroup>
           <InputWithLabel
@@ -247,8 +247,8 @@ const Calculator = ({ authorized, userName }) => {
             handleChangeInput={handleSetCalculationName}
           />
         </FormGroup>
-        <ComonBtn handleBtnClick={handleSaveСalculation}>Save</ComonBtn>
-        <ComonBtn handleBtnClick={handleCloseModal}>Cancel</ComonBtn>
+        <ComonBtn handleBtnClick={handleSaveСalculation} variant="contained" sx={{mr: '15px', mt: '15px'}}>Save</ComonBtn>
+        <ComonBtn handleBtnClick={handleCloseModal} variant="contained" sx={{mt: '15px'}}>Cancel</ComonBtn>
       </ModalComponent>
     </>
   );

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Typography, Box, Divider } from "@mui/material";
-import ComonBtn from "../buttons/ComonBtn";
+import { Typography, Box, Divider, SvgIcon } from "@mui/material";
+import IconBtn from "../buttons/IconBtn";
+import * as Svgs from "../../images/svg/SvgIcons";
 
 const FormDataComponent = ({
   currentCalculation,
@@ -28,6 +29,11 @@ const FormDataComponent = ({
             sx={{ fontSize: "25px", mb: "15px" }}
             className="section__header"
           >
+            <SvgIcon
+              component={Svgs.ListIcon}
+              inheritViewBox
+              className="basic__icon"
+            />
             Current calculation info:{" "}
           </Typography>
           <li>
@@ -93,6 +99,11 @@ const FormDataComponent = ({
             sx={{ fontSize: "25px", mb: "15px" }}
             className="section__header"
           >
+            <SvgIcon
+              component={Svgs.EditIcon}
+              inheritViewBox
+              className="basic__icon"
+            />
             Update calculation data:
           </Typography>
           <input
@@ -152,6 +163,15 @@ const FormDataComponent = ({
           <button type="submit" className="input__btn">
             Submit
           </button>
+
+          <Typography sx={{ fontSize: "15px", width: "250px" }}>
+            <SvgIcon
+              component={Svgs.AlertIcon}
+              inheritViewBox
+              className="basic__icon"
+            />
+            In case of submit, calculation date will be updated automatically.
+          </Typography>
         </form>
       </Box>
       <Divider />
@@ -170,9 +190,10 @@ const FormDataComponent = ({
             Total: {totalCost || 0}{" "}
           </Typography>
         </div>
-        <ComonBtn handleBtnClick={deleteCalculation} variant="contained">
+        <IconBtn handleBtnClick={deleteCalculation} variant="contained">
+          <SvgIcon component={Svgs.TrashIcon} inheritViewBox />
           Delete calculation
-        </ComonBtn>
+        </IconBtn>
       </Box>
     </>
   );

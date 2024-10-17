@@ -18,7 +18,7 @@ const Error = () => {
       <Typography sx={{ fontSize: "30px" }}>
         Hmmmm.... that page does not exist.
       </Typography>
-      <ComonBtn handleBtnClick={handleBackBtnClick}>Go back</ComonBtn>
+      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained">Go back</ComonBtn>
     </div>
   );
 };
