@@ -126,7 +126,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 25px;
-  max-width: 500px;
+  max-width: 300px;
 }
 
 .input {
@@ -138,8 +138,6 @@
   border: 2px solid var(--green_600);
   background-color: var(--marshmallows_50);
   font-size: 20px;
-  line-height: 25px;
-  margin-left: 50px;
   transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
 
   &:is(:hover, :active) {
@@ -150,7 +148,6 @@
   &:focus {
     border: 2px solid var(--marshmallows_400);
     color: var(--marshmallows_400);
-
   }
 }
 
@@ -162,14 +159,12 @@
 .input__btn {
   color: var(--marshmallows_400);
   max-width: 100px;
-  padding: 3px;
+  padding: 3px 10px;
   border-radius: 10px;
   border: 2px solid var(--marshmallows_400);
   background-color: var(--marshmallows_50);
   font-size: 20px;
-  line-height: 25px;
-  margin-left: 260px;
-  margin-top: 10px;
+  margin: 10px 0 0 auto;
   transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
 
   &:is(:hover, :active) {
@@ -184,10 +179,9 @@
 }
 
 .totalCost {
-  font-size: 50px;
   display: flex;
   justify-content: flex-end;
-  color: var(--marshmallows_700);
+  color: var(--marshmallows_400);
 }
 
 .calculation__btns {
@@ -247,19 +241,17 @@
   }
 }
 
-.formdata__box {
-  display: flex;
-  justify-content: space-between;
-}
 
 .formData {
   display: flex;
-  gap: 100px;
-  align-items: center;
+  align-items: flex-start; 
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .form_updateCalculation {
   display: flex;
+  gap: 10px;
   flex-direction: column;
 }
 
@@ -321,6 +313,7 @@
   border-radius: 10px;
   text-decoration: none;
   padding: 2px 5px;
+  margin: 0 0 0 auto;
   transition: color 0.3s ease-in-out, border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   &:is(:hover, :active) {

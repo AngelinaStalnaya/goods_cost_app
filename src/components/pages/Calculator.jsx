@@ -224,7 +224,6 @@ const Calculator = ({ authorized, userName }) => {
         {authorized && (
           <ComonBtn handleBtnClick={handleOpenModal} variant="contained">Save calculation</ComonBtn>
         )}
-
         <ComonBtn handleBtnClick={handleFormClear} variant="contained">
           Clear all
         </ComonBtn>

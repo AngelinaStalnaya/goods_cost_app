@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import FormDataComponent from "./FormDataComponent";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-const FormDataWrapper = ({
-  currentCalculation,
-  id,
+import {
   getCalculationDataAsync,
   updateCalculationDataAsync,
   deleteCalculationAsync,
-}) => {
+} from "../../redux/calculations/calculationSlice";
+
+const FormDataWrapper = ({ currentCalculation, id }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

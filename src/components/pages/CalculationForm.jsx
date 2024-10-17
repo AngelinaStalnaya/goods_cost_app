@@ -3,13 +3,7 @@ import ComonBtn from "../buttons/ComonBtn";
 import { useNavigate, useLocation } from "react-router-dom";
 import FormDataWrapper from "../formdata/FormDatawrapper";
 
-const CalculationForm = ({
-  authorized,
-  currentCalculation,
-  getCalculationDataAsync,
-  updateCalculationDataAsync,
-  deleteCalculationAsync
-}) => {
+const CalculationForm = ({ authorized, currentCalculation }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,14 +15,10 @@ const CalculationForm = ({
 
   return (
     <div>
-      <ComonBtn handleBtnClick={handleBackBtnClick}>Go back</ComonBtn>
-      <FormDataWrapper
-        currentCalculation={currentCalculation}
-        id={state.id}
-        getCalculationDataAsync={getCalculationDataAsync}
-        updateCalculationDataAsync={updateCalculationDataAsync}
-        deleteCalculationAsync={deleteCalculationAsync}
-      />
+      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained">
+        Go back
+      </ComonBtn>
+      <FormDataWrapper currentCalculation={currentCalculation} id={state.id} />
     </div>
   );
 };

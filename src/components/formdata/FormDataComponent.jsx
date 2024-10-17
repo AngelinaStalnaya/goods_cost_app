@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Typography } from "@mui/material";
+import { Typography, Box, Divider } from "@mui/material";
 import ComonBtn from "../buttons/ComonBtn";
 
 const FormDataComponent = ({
@@ -9,119 +9,172 @@ const FormDataComponent = ({
   getCalculationDataAsync,
   handleUpdateCalculation,
   deleteCalculation,
-  basicResult, additionalResult, taxRate, totalCost
+  basicResult,
+  additionalResult,
+  taxRate,
+  totalCost,
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCalculationDataAsync(id));
-  }); 
+  });
 
   return (
-    <div className="formData">
-      <ul className="calculation_data">
-        <li>
-          <Typography>Calculation name: {currentCalculation.name}</Typography>
-        </li>
-        <li>
-          <Typography>
-            Time spent for the product: {currentCalculation.hours} hour(s)
+    <>
+      <Box className="formData">
+        <ul className="calculation_data">
+          <Typography
+            sx={{ fontSize: "25px", mb: "15px" }}
+            className="section__header"
+          >
+            Current calculation info:{" "}
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            The cost of labour hour: {currentCalculation.payment} units / hour
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Calculation name: {currentCalculation.name}
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Time spent for the product: {currentCalculation.hours} hour(s)
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              The cost of labour hour: {currentCalculation.payment} units / hour
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Material costs for the product: {currentCalculation.materials}{" "}
+              units
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Delivery costs: {currentCalculation.delivery || 0} unit(s)
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Packaging costs: {currentCalculation.packaging || 0} unit(s)
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Tax rate: {currentCalculation.tax_rate || 0} %
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Additional costs: {currentCalculation.additional_costs || 0}{" "}
+              unit(s)
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Costs on basic equipment usage:{" "}
+              {currentCalculation.equipment || 0} unit(s)
+            </Typography>
+          </li>
+          <li>
+            <Typography sx={{ fontSize: "25px", mb: "10px" }}>
+              Calculation date: {currentCalculation.date || 0}
+            </Typography>
+          </li>
+        </ul>
+        <form
+          id="update_calculation"
+          className="form_updateCalculation"
+          onSubmit={handleUpdateCalculation}
+        >
+          <Typography
+            sx={{ fontSize: "25px", mb: "15px" }}
+            className="section__header"
+          >
+            Update calculation data:
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            Material costs for the product: {currentCalculation.materials} units
+          <input
+            type="text"
+            name="name"
+            placeholder="New name:"
+            className="input"
+          />
+          <input
+            type="number"
+            name="hours"
+            placeholder="Time spent now: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="payment"
+            placeholder="New labour cost: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="materials"
+            placeholder="New material costs: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="delivery"
+            placeholder="New delivery costs: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="packaging"
+            placeholder="New packaging costs: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="tax_rate"
+            placeholder="New tax rate: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="additional_costs"
+            placeholder="New additional costs: "
+            className="input"
+          />
+          <input
+            type="number"
+            name="equipment"
+            placeholder="New equipment costs: "
+            className="input"
+          />
+          <button type="submit" className="input__btn">
+            Submit
+          </button>
+        </form>
+      </Box>
+      <Divider />
+      <Box>
+        <div className="formdata_results">
+          <Typography sx={{ fontSize: "20px" }}>
+            Materials and work: {basicResult}
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            Delivery costs: {currentCalculation.delivery || 0} unit(s)
+          <Typography sx={{ fontSize: "20px" }}>
+            Additional costs: {additionalResult}
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            Packaging costs: {currentCalculation.packaging || 0} unit(s)
+          <Typography sx={{ fontSize: "20px" }}>
+            Tax rate: {taxRate} (%)
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            Tax rate: {currentCalculation.tax_rate || 0} %
+          <Typography className="totalCost" sx={{ fontSize: "35px" }}>
+            Total: {totalCost || 0}{" "}
           </Typography>
-        </li>
-        <li>
-          <Typography>
-            Additional costs: {currentCalculation.additional_costs || 0} unit(s)
-          </Typography>
-        </li>
-        <li>
-          <Typography>
-            Costs on basic equipment usage: {currentCalculation.equipment || 0} unit(s)
-          </Typography>
-        </li>
-        <li>
-          <Typography>
-            Calculation date: {currentCalculation.date || 0}
-          </Typography>
-        </li>
-      </ul>
-
-
-      <form
-        id="update_calculation"
-        className="form_updateCalculation"
-        onSubmit={handleUpdateCalculation}
-      >
-        <h3>Update calculation data:</h3>
-        <input type="text" name="name" placeholder="New name:" />
-        <input type="number" name="hours" placeholder="Time spent now: " />
-        <input type="number" name="payment" placeholder="New labour cost: " />
-        <input
-          type="number"
-          name="materials"
-          placeholder="New material costs: "
-        />
-        <input
-          type="number"
-          name="delivery"
-          placeholder="New delivery costs: "
-        />
-        <input
-          type="number"
-          name="packaging"
-          placeholder="New packaging costs: "
-        />
-        <input type="number" name="tax_rate" placeholder="Current tax rate: " />
-        <input
-          type="number"
-          name="additional_costs"
-          placeholder="New additional costs: "
-        />
-        <input
-          type="number"
-          name="equipment"
-          placeholder="New equipment usage costs: "
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <div className='formdata_results'>
-      <Typography className="basicCosts">
-        Materials and work: {basicResult}
-      </Typography>
-      <Typography className="additionals">
-        Additional costs: {additionalResult}
-      </Typography>
-      <Typography className="taxes">
-        Tax rate (%): {taxRate}
-      </Typography>
-      <Typography className="totalCost">Total: {totalCost || 0} </Typography>
-      </div>
-      <ComonBtn handleBtnClick={deleteCalculation}>Delete calculation</ComonBtn>
-    </div>
+        </div>
+        <ComonBtn handleBtnClick={deleteCalculation} variant="contained">
+          Delete calculation
+        </ComonBtn>
+      </Box>
+    </>
   );
 };
 

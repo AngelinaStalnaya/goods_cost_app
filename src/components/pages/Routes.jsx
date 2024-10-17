@@ -9,14 +9,9 @@ import LoginWrapper from "../login/LoginWrapper";
 
 const RoutesComponent = ({
   authorized,
-  loggedInAsync,
   userName,
   userCalculations,
   currentCalculation,
-  getCalculationDataAsync,
-  getUserCalculationsAsync,
-  updateCalculationDataAsync,
-  deleteCalculationAsync
 }) => {
   return (
     <>
@@ -32,7 +27,6 @@ const RoutesComponent = ({
               authorized={authorized}
               userCalculations={userCalculations}
               userName={userName}
-              getUserCalculationsAsync={getUserCalculationsAsync}
             />
           }
         />
@@ -42,9 +36,6 @@ const RoutesComponent = ({
             <CalculationForm
               authorized={authorized}
               currentCalculation={currentCalculation}
-              getCalculationDataAsync={getCalculationDataAsync}
-              updateCalculationDataAsync={updateCalculationDataAsync}
-              deleteCalculationAsync={deleteCalculationAsync}
             />
           }
         />
