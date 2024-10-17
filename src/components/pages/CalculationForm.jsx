@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import ComonBtn from "../buttons/ComonBtn";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FormDataWrapper from "../formdata/FormDatawrapper";
 
-const CalculationForm = ({ authorized, currentCalculation }) => {
+const CalculationForm = ({ authorized, currentCalculation, userId }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -11,14 +11,13 @@ const CalculationForm = ({ authorized, currentCalculation }) => {
   });
 
   const handleBackBtnClick = () => navigate(-1);
-  const { state } = useLocation();
 
   return (
     <div>
       <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained">
         Go back
       </ComonBtn>
-      <FormDataWrapper currentCalculation={currentCalculation} id={state.id} />
+      <FormDataWrapper currentCalculation={currentCalculation} id={userId} />
     </div>
   );
 };

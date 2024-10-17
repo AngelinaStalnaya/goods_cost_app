@@ -12,6 +12,7 @@ const RoutesComponent = ({
   userName,
   userCalculations,
   currentCalculation,
+  userId
 }) => {
   return (
     <>
@@ -36,6 +37,7 @@ const RoutesComponent = ({
             <CalculationForm
               authorized={authorized}
               currentCalculation={currentCalculation}
+              userId={userId}
             />
           }
         />
