@@ -19,7 +19,7 @@ const Header = ({
   return (
       <Grid container className="header">
         <Grid size={7} className="header__name">
-          <Link to="/">
+          <Link to="/" className='header__icon-link'>
             <SvgIcon
               component={Svgs.BasicIcon}
               inheritViewBox
