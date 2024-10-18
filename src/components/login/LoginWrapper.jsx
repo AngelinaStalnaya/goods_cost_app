@@ -15,12 +15,14 @@ const LoginWrapper = () => {
     const data = Object.fromEntries(new FormData(e.target));
     const response = await findUser(data);
 
+
     if (response === null) {
       alert("Wrong login. Please, try again!");
     } else if (response === "Wrong password") {
       alert("Wrong password. Please, try again!");
     } else {
       dispatch(loggedInAsync(response._id));
+      document.cookie = `HGCA=${response._id}; secure; max-age=3600`
       return navigate("/");
     }
   };

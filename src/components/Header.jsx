@@ -9,7 +9,7 @@ import { loggedOut } from "../redux/user/userSlice";
 import { clearState } from "../redux/calculations/calculationsListSlice";
 import { clearCalculationState } from "../redux/calculations/calculationSlice";
 
-const Header = ({ authorized }) => {
+const Header = ({ authorized, userId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ const Header = ({ authorized }) => {
               aria_label="Sign out"
               handleBtnClick={() => {
                 dispatch(loggedOut());
+                document.cookie = `HGCA=${userId}; secure; max-age=-1`
                 dispatch(clearState());
                 dispatch(clearCalculationState());
               }}
