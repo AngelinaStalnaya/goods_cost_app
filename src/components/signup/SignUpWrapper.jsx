@@ -27,7 +27,6 @@ const SignUpWrapper = () => {
         name: data.name,
         login: data.login,
         password: data.password1,
-        sex: data?.sex,
       };
 
       const response = await findUser(userToFind);
