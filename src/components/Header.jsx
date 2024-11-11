@@ -34,7 +34,7 @@ const Header = ({ authorized, userId }) => {
               aria_label="Sign out"
               handleBtnClick={() => {
                 dispatch(loggedOut());
-                document.cookie = `HGCA=${userId}; secure; max-age=-1`
+                document.cookie = `HGCA=${userId}; secure; max-age=-1;`
                 dispatch(clearState());
                 dispatch(clearCalculationState());
               }}
