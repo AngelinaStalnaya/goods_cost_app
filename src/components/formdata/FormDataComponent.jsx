@@ -26,7 +26,7 @@ const FormDataComponent = ({
       <Box className="formData">
         <ul className="calculation_data">
           <Typography
-            sx={{ fontSize: ["20px", "25px"], mb: "15px" }}
+            sx={{fontSize: ["20px", "25px"], mb: "15px" }}
             className="section__header"
           >
             <SvgIcon
@@ -37,55 +37,55 @@ const FormDataComponent = ({
             Current calculation info:{" "}
           </Typography>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Calculation name: {currentCalculation.name}
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Time spent for the product: {currentCalculation.hours} hour(s)
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               The cost of labour hour: {currentCalculation.payment} units / hour
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Material costs for the product: {currentCalculation.materials}{" "}
               units
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Delivery costs: {currentCalculation.delivery || 0} unit(s)
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Packaging costs: {currentCalculation.packaging || 0} unit(s)
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Tax rate: {currentCalculation.tax_rate || 0} %
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Additional costs: {currentCalculation.additional_costs || 0}{" "}
               unit(s)
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Costs on basic equipment usage:{" "}
               {currentCalculation.equipment || 0} unit(s)
             </Typography>
           </li>
           <li>
-            <Typography sx={{ fontSize: ["20px", "25px"], mb: "10px" }}>
+            <Typography sx={{fontSize: ["15px", "20px"], mb: "10px" }}>
               Calculation date: {currentCalculation.date || 0}
             </Typography>
           </li>
@@ -96,7 +96,7 @@ const FormDataComponent = ({
           onSubmit={handleUpdateCalculation}
         >
           <Typography
-            sx={{ fontSize: ["20px", "25px"], mb: "15px" }}
+            sx={{fontSize: ["15px", "20px"], mb: "15px" }}
             className="section__header"
           >
             <SvgIcon
@@ -193,7 +193,7 @@ const FormDataComponent = ({
         <Divider sx={{mb: '10px'}}/>
         <IconBtn handleBtnClick={deleteCalculation} variant="contained">
           <SvgIcon component={Svgs.TrashIcon} inheritViewBox />
-          <Typography sx={{ fontSize: ["20px", "25px"] }}>
+          <Typography sx={{fontSize: ["15px", "20px"] }}>
             Delete calculation
           </Typography>
         </IconBtn>

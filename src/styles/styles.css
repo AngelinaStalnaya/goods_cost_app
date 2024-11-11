@@ -375,4 +375,8 @@
   .input {
     font-size: 15px;
   }
+
+  .calculation_data {
+     padding: 0;
+  }
 }
