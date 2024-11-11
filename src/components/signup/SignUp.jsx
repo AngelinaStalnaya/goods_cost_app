@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 const SignUp = ({ handleFormSubmit }) => {
   return (
     <>
-      <Typography className="section__header" sx={{ fontSize: "25px" }}>
+      <Typography className="section__header" sx={{ fontSize: ["20px", "25px"] }}>
         Sign up with your data:
       </Typography>
       <form id="signUpForm" onSubmit={handleFormSubmit} className="form__auth">

@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Box className="footer">
       <Box className="footer__contacts">
-        <Typography sx={{ fontSize: "20px" }}>
+        <Typography sx={{ fontSize: ["15px", "20px"] }}>
           ©2024 Angelina Stalnaya
         </Typography>
         <Box className='footer__contacts_icons'>

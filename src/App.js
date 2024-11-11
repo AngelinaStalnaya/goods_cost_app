@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import "./styles/styles.css";
 import Grid from "@mui/material/Grid2";
 import Header from "./components/Header";
@@ -7,6 +7,7 @@ import RoutesComponent from "./components/pages/Routes";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loggedInAsync } from "./redux/user/userSlice";
+import Loader from './components/loader/Loader';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
 
 
   return (
+    <Suspense fallback={<Loader />}>
     <div className="App">
       <Grid container spacing={2}>
         <Grid size={12}>
@@ -53,6 +55,7 @@ const App = () => {
         </Grid>
       </Grid>
     </div>
+    </Suspense>
   );
 };
 

@@ -104,11 +104,11 @@ const Calculator = ({ authorized, userName }) => {
     <>
       <Typography
         className="section__header"
-        sx={{ fontSize: "25px", mb: "15px" }}
+        sx={{ fontSize: ["20px", "25px"], mb: "15px" }}
       >
         Handmade Goods Cost Calculator
       </Typography>
-      <Typography sx={{ mb: "20px" }}>
+      <Typography sx={{ mb: ["15px", "20px"], fontSize: ["15px", "20px"]}}>
         This is a simple calculator for defining handmade goods cost. Fill in the following inputs and receive final calculations.
       </Typography>
 
@@ -206,26 +206,26 @@ const Calculator = ({ authorized, userName }) => {
       </FormGroup>
       <Divider  sx={{mb:'15px'}}/>
 
-      <Typography sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize: ["15px", "20px"]  }}>
         Materials and work: {basicResult}
       </Typography>
-      <Typography sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize: ["15px", "20px"]  }}>
         Additional costs: {additionalResult}
       </Typography>
-      <Typography sx={{ fontSize: "20px" }}>
+      <Typography sx={{ fontSize:["15px", "20px"]  }}>
         Tax rate (%): {taxRate.tax_rate}
       </Typography>
 
-      <Typography className="totalCost" sx={{ fontSize: "35px" }}>
+      <Typography className="totalCost" sx={{ fontSize: ["25px", "35px"] }}>
         Total: {totalCost || 0}{" "}
       </Typography>
 
       <Divider sx={{mb: '10px'}}/>
       <Box className="calculation__btns">
         {authorized && (
-          <ComonBtn handleBtnClick={handleOpenModal} variant="contained">Save calculation</ComonBtn>
+          <ComonBtn handleBtnClick={handleOpenModal} variant="contained" sx={{fontSize: ["15px", "20px"]}}>Save calculation</ComonBtn>
         )}
-        <ComonBtn handleBtnClick={handleFormClear} variant="contained">
+        <ComonBtn handleBtnClick={handleFormClear} variant="contained" sx={{fontSize: ["15px", "20px"]}}>
           Clear all
         </ComonBtn>
       </Box>
@@ -247,8 +247,8 @@ const Calculator = ({ authorized, userName }) => {
             handleChangeInput={handleSetCalculationName}
           />
         </FormGroup>
-        <ComonBtn handleBtnClick={handleSaveСalculation} variant="contained" sx={{mr: '15px', mt: '15px'}}>Save</ComonBtn>
-        <ComonBtn handleBtnClick={handleCloseModal} variant="contained" sx={{mt: '15px'}}>Cancel</ComonBtn>
+        <ComonBtn handleBtnClick={handleSaveСalculation} variant="contained" sx={{mr: '15px', mt: '15px', fontSize: ["15px", "20px"]}}>Save</ComonBtn>
+        <ComonBtn handleBtnClick={handleCloseModal} variant="contained" sx={{mt: '15px', fontSize: ["15px", "20px"]}}>Cancel</ComonBtn>
       </ModalComponent>
     </>
   );

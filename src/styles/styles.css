@@ -109,7 +109,6 @@
 
   &:focus {
     outline: 3px solid var(--marshmallows_600);
-
   }
 }
 
@@ -156,7 +155,6 @@
 
 .input__label {
   padding: 0;
-  font-size: 20px;
 }
 
 .input__btn {
@@ -244,10 +242,9 @@
   }
 }
 
-
 .formData {
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -298,7 +295,7 @@
 
 .list {
   list-style: none;
-  display:flex;
+  display: flex;
   flex-direction: column;
   gap: 10px;
 }
@@ -307,7 +304,7 @@
   font-size: 20px;
   display: flex;
   gap: 10px;
-  align-items:center;
+  align-items: center;
   justify-content: flex-start;
   width: 45%;
 }
@@ -320,7 +317,8 @@
   text-decoration: none;
   padding: 2px 5px;
   margin: 0 0 0 auto;
-  transition: color 0.3s ease-in-out, border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, border 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 
   &:is(:hover, :active) {
     border: 2px solid var(--purple_600);
@@ -332,5 +330,40 @@
     border: 2px solid var(--marshmallows_400);
     color: var(--marshmallows_400);
     background-color: var(--marshmallows_50);
+  }
+}
+
+@media (max-width: 860px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app_name {
+    text-align: center;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .header__icon,
+  .footer__icon,
+  .basic__icon {
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 5px;
+  }
+
+  .header__navigation {
+    justify-content: center;
+  }
+
+  .footer__additional {
+    display: none;
+  }
+
+  .input__btn {
+    font-size: 15px;
   }
 }

@@ -14,16 +14,20 @@ const Header = ({ authorized, userId }) => {
   const dispatch = useDispatch();
 
   return (
-    <Grid container className="header">
+    <Grid
+      container
+      className="header"
+      sx={{ flexDirection: ["column", "row"] }}
+    >
       <Grid size={7} className="header__name">
         <Link to="/" className="header__icon-link">
           <SvgIcon
             component={Svgs.BasicIcon}
             inheritViewBox
-            sx={{ width: "3em", height: "3em" }}
+            sx={{ width: ["2em", "3em"], height: ["2em", "3em"] }}
           />
         </Link>
-        <Typography sx={{ fontSize: "30px" }}>
+        <Typography className="app_name" sx={{ fontSize: ["25px", "30px"] }}>
           Handmade Goods Cost Calculator
         </Typography>
       </Grid>
@@ -34,7 +38,7 @@ const Header = ({ authorized, userId }) => {
               aria_label="Sign out"
               handleBtnClick={() => {
                 dispatch(loggedOut());
-                document.cookie = `HGCA=${userId}; secure; max-age=-1;`
+                document.cookie = `HGCA=${userId}; secure; max-age=-1;`;
                 dispatch(clearState());
                 dispatch(clearCalculationState());
               }}
@@ -44,7 +48,9 @@ const Header = ({ authorized, userId }) => {
                 inheritViewBox
                 className="header__icon"
               />
-              Sign Out
+              <Typography sx={{ fontSize: ["20px", "25px"] }}>
+                Sign Out
+              </Typography>
             </IconBtn>
 
             <IconBtn>
@@ -54,7 +60,9 @@ const Header = ({ authorized, userId }) => {
                   component={Svgs.HomeIcon}
                   inheritViewBox
                 />
-                Profile
+                <Typography sx={{ fontSize: ["20px", "25px"] }}>
+                  Profile
+                </Typography>
               </Link>
             </IconBtn>
           </>
@@ -71,7 +79,9 @@ const Header = ({ authorized, userId }) => {
                 component={Svgs.LockIcon}
                 inheritViewBox
               />
-              Sign Up
+              <Typography sx={{ fontSize: ["20px", "25px"] }}>
+                Sign Up
+              </Typography>
             </IconBtn>
             <IconBtn
               aria_label="Log in"
@@ -84,7 +94,9 @@ const Header = ({ authorized, userId }) => {
                 inheritViewBox
                 className="header__icon"
               />
-              Log In
+              <Typography sx={{ fontSize: ["20px", "25px"] }}>
+                Log In
+              </Typography>
             </IconBtn>
           </>
         )}

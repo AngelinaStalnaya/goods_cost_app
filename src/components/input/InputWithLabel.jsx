@@ -14,7 +14,7 @@ const InputWithLabel = ({
 }) => {
   return (
     <>
-      <InputLabel htmlFor={id} className="input__label">
+      <InputLabel htmlFor={id} className="input__label" sx={{fontSize: ["15px", "20px"]}}>
         {labelText}
       </InputLabel>
       <Input
@@ -26,6 +26,7 @@ const InputWithLabel = ({
         name={name}
         value={value}
         onChange={handleChangeInput}
+        sx={{fontSize: ["15px", "20px"]}}
       />
     </>
   );
