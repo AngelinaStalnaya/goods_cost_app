@@ -54,7 +54,7 @@ const Header = ({ authorized, userId }) => {
             </IconBtn>
 
             <IconBtn>
-              <Link to="/profile">
+              <Link to="/profile" sx={{display: 'flex'}}>
                 <SvgIcon
                   className="header__icon"
                   component={Svgs.HomeIcon}

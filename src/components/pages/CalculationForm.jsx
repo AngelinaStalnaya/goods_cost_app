@@ -16,7 +16,7 @@ const CalculationForm = ({ authorized, currentCalculation }) => {
 
   return (
     <div>
-      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained">
+      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained" sx={{fontSize: ["15px", "20px"]}}>
         Go back
       </ComonBtn>
       <FormDataWrapper currentCalculation={currentCalculation} id={state.id} />

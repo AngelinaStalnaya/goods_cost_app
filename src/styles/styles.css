@@ -366,4 +366,13 @@
   .input__btn {
     font-size: 15px;
   }
+
+  .formData {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+
+  .input {
+    font-size: 15px;
+  }
 }
