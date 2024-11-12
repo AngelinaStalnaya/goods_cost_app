@@ -41,7 +41,7 @@ const App = () => {
           <Header authorized={authorized} userId={userId} />
         </Grid>
         <Suspense fallback={<Loader />}>
-          <Grid size={12}>
+          <Grid size={12} className='main_grid'>
             <RoutesComponent
               userName={userName}
               authorized={authorized}
