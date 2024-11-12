@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import IconBtn from "./buttons/IconBtn";
 import { SvgIcon, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -8,6 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { loggedOut } from "../redux/user/userSlice";
 import { clearState } from "../redux/calculations/calculationsListSlice";
 import { clearCalculationState } from "../redux/calculations/calculationSlice";
+import Loader from './loader/Loader';
 
 const Header = ({ authorized, userId }) => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Header = ({ authorized, userId }) => {
       <Grid size={5} className="header__navigation">
         {authorized ? (
           <>
+          <Suspense fallback={<Loader />}>
             <IconBtn
               aria_label="Sign out"
               handleBtnClick={() => {
@@ -65,9 +67,11 @@ const Header = ({ authorized, userId }) => {
                 </Typography>
               </Link>
             </IconBtn>
+            </Suspense>
           </>
         ) : (
           <>
+          <Suspense fallback={<Loader />}>
             <IconBtn
               aria_label="Sign up"
               handleBtnClick={() => {
@@ -98,6 +102,7 @@ const Header = ({ authorized, userId }) => {
                 Log In
               </Typography>
             </IconBtn>
+            </Suspense>
           </>
         )}
       </Grid>

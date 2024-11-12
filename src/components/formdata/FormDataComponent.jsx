@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import { Typography, Box, Divider, SvgIcon } from "@mui/material";
 import IconBtn from "../buttons/IconBtn";
 import * as Svgs from "../../images/svg/SvgIcons";
+import Loader from '../loader/Loader';
 
 const FormDataComponent = ({
   currentCalculation,
@@ -24,6 +25,7 @@ const FormDataComponent = ({
   return (
     <>
       <Box className="formData">
+        <Suspense fallback={<Loader />}>
         <ul className="calculation_data">
           <Typography
             sx={{fontSize: ["20px", "25px"], mb: "15px" }}
@@ -90,6 +92,8 @@ const FormDataComponent = ({
             </Typography>
           </li>
         </ul>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
         <form
           id="update_calculation"
           className="form_updateCalculation"
@@ -173,9 +177,11 @@ const FormDataComponent = ({
             In case of submit, calculation date will be updated automatically.
           </Typography>
         </form>
+        </Suspense>
       </Box>
       <Divider />
       <Box>
+      <Suspense fallback={<Loader />}>
         <div className="formdata_results">
           <Typography sx={{ fontSize: ["15px", "20px"]}}>
             Materials and work: {basicResult}
@@ -190,6 +196,7 @@ const FormDataComponent = ({
             Total: {totalCost || 0}{" "}
           </Typography>
         </div>
+        </Suspense>
         <Divider sx={{mb: '10px'}}/>
         <IconBtn handleBtnClick={deleteCalculation} variant="contained">
           <SvgIcon component={Svgs.TrashIcon} inheritViewBox />

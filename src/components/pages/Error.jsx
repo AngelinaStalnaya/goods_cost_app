@@ -13,12 +13,13 @@ const Error = () => {
       <SvgIcon
         component={CancelIcon}
         inheritViewBox
-        sx={{ width: "7em", height: "7em" }}
+        className="loader"
+        sx={{ width: ['4em', "7em"], height: ['4em', "7em"] }}
       />
-      <Typography sx={{ fontSize: "30px" }}>
+      <Typography sx={{ fontSize: ['20px', "30px"] }}>
         Hmmmm.... that page does not exist.
       </Typography>
-      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained">Go back</ComonBtn>
+      <ComonBtn handleBtnClick={handleBackBtnClick} variant="contained" sx={{mt: '15px', fontSize: ["15px", "20px"]}}>Go back</ComonBtn>
     </div>
   );
 };

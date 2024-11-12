@@ -7,7 +7,7 @@ import RoutesComponent from "./components/pages/Routes";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loggedInAsync } from "./redux/user/userSlice";
-import Loader from './components/loader/Loader';
+import Loader from "./components/loader/Loader";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,39 +23,39 @@ const App = () => {
   const currentCalculation = useSelector(
     (AppSelector) => AppSelector.calculation
   );
-  
-  useEffect(() => {
-    let cookies = document.cookie.split(';').filter(el => el.includes('HGCA'));
-    if (cookies.length > 0) {
-      const id = cookies[0].substring(5)
-      dispatch(loggedInAsync(id))
-    }
-  })
 
+  useEffect(() => {
+    let cookies = document.cookie
+      .split(";")
+      .filter((el) => el.includes("HGCA"));
+    if (cookies.length > 0) {
+      const id = cookies[0].substring(5);
+      dispatch(loggedInAsync(id));
+    }
+  });
 
   return (
-    <Suspense fallback={<Loader />}>
     <div className="App">
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Header authorized={authorized} userId={userId}/>
+          <Header authorized={authorized} userId={userId} />
         </Grid>
-
-        <Grid size={12}>
-          <RoutesComponent
-            userName={userName}
-            authorized={authorized}
-            userCalculations={userCalculations}
-            currentCalculation={currentCalculation}
-          />
-        </Grid>
+        <Suspense fallback={<Loader />}>
+          <Grid size={12}>
+            <RoutesComponent
+              userName={userName}
+              authorized={authorized}
+              userCalculations={userCalculations}
+              currentCalculation={currentCalculation}
+            />
+          </Grid>
+        </Suspense>
 
         <Grid size={12}>
           <Footer />
         </Grid>
       </Grid>
     </div>
-    </Suspense>
   );
 };
 
